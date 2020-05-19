@@ -18,7 +18,7 @@ Linker script and memory map
 
 Address of section .text set to 0x8004000
 LOAD init-sf.o
-LOAD softwareblink.o
+LOAD template.o
 LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a
 LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgcc.a
 LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
@@ -85,7 +85,7 @@ LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
 .iplt
  *(.iplt)
 
-.text           0x0000000008004000      0xa64
+.text           0x0000000008004000      0xa10
  *(.text.unlikely .text.*_unlikely .text.unlikely.*)
  *(.text.exit .text.exit.*)
  *(.text.startup .text.startup.*)
@@ -94,46 +94,46 @@ LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
  .text          0x0000000008004000       0x1c init-sf.o
                 0x0000000008004000                _start
                 0x0000000008004010                __errno
- .text          0x000000000800401c       0x74 softwareblink.o
+ .text          0x000000000800401c       0x20 template.o
                 0x000000000800401c                main
- .text          0x0000000008004090       0x34 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-exit.o)
-                0x0000000008004090                exit
- .text          0x00000000080040c4        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
- .text          0x00000000080040c4      0x11c /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-__call_atexit.o)
-                0x00000000080040c4                __call_exitprocs
- .text          0x00000000080041e0      0x884 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a(syscalls.o)
-                0x0000000008004284                __syscall_error
-                0x00000000080042b4                _open
-                0x00000000080042fc                _openat
-                0x0000000008004340                _lseek
-                0x0000000008004388                _read
-                0x00000000080043d0                _write
-                0x0000000008004418                _fstat
-                0x0000000008004480                _stat
-                0x00000000080044e8                _lstat
-                0x0000000008004550                _fstatat
-                0x00000000080045b0                _access
-                0x00000000080045fc                _faccessat
-                0x0000000008004640                _close
-                0x0000000008004690                _link
-                0x00000000080046dc                _unlink
-                0x000000000800472c                _execve
-                0x0000000008004750                _fork
-                0x0000000008004774                _getpid
-                0x000000000800477c                _kill
-                0x00000000080047a0                _wait
-                0x00000000080047c4                _isatty
-                0x00000000080047f4                _gettimeofday
-                0x0000000008004844                _times
-                0x00000000080048e8                _ftime
-                0x0000000008004904                _utime
-                0x000000000800490c                _chown
-                0x0000000008004914                _chmod
-                0x000000000800491c                _chdir
-                0x0000000008004924                _getcwd
-                0x000000000800492c                _sysconf
-                0x0000000008004948                _sbrk
-                0x0000000008004a28                _exit
+ .text          0x000000000800403c       0x34 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-exit.o)
+                0x000000000800403c                exit
+ .text          0x0000000008004070        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
+ .text          0x0000000008004070      0x11c /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-__call_atexit.o)
+                0x0000000008004070                __call_exitprocs
+ .text          0x000000000800418c      0x884 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a(syscalls.o)
+                0x0000000008004230                __syscall_error
+                0x0000000008004260                _open
+                0x00000000080042a8                _openat
+                0x00000000080042ec                _lseek
+                0x0000000008004334                _read
+                0x000000000800437c                _write
+                0x00000000080043c4                _fstat
+                0x000000000800442c                _stat
+                0x0000000008004494                _lstat
+                0x00000000080044fc                _fstatat
+                0x000000000800455c                _access
+                0x00000000080045a8                _faccessat
+                0x00000000080045ec                _close
+                0x000000000800463c                _link
+                0x0000000008004688                _unlink
+                0x00000000080046d8                _execve
+                0x00000000080046fc                _fork
+                0x0000000008004720                _getpid
+                0x0000000008004728                _kill
+                0x000000000800474c                _wait
+                0x0000000008004770                _isatty
+                0x00000000080047a0                _gettimeofday
+                0x00000000080047f0                _times
+                0x0000000008004894                _ftime
+                0x00000000080048b0                _utime
+                0x00000000080048b8                _chown
+                0x00000000080048c0                _chmod
+                0x00000000080048c8                _chdir
+                0x00000000080048d0                _getcwd
+                0x00000000080048d8                _sysconf
+                0x00000000080048f4                _sbrk
+                0x00000000080049d4                _exit
  *(.gnu.warning)
 
 .fini
@@ -170,7 +170,7 @@ LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
 
 .exception_ranges
  *(.exception_ranges .exception_ranges*)
-                0x0000000008005a64                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
+                0x0000000008005a10                . = DATA_SEGMENT_ALIGN (CONSTANT (MAXPAGESIZE), CONSTANT (COMMONPAGESIZE))
 
 .eh_frame
  *(.eh_frame)
@@ -192,18 +192,18 @@ LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
  *(.tbss .tbss.* .gnu.linkonce.tb.*)
  *(.tcommon)
 
-.preinit_array  0x0000000008005a64        0x0
+.preinit_array  0x0000000008005a10        0x0
                 [!provide]                        PROVIDE (__preinit_array_start, .)
  *(.preinit_array)
                 [!provide]                        PROVIDE (__preinit_array_end, .)
 
-.init_array     0x0000000008005a64        0x0
+.init_array     0x0000000008005a10        0x0
                 [!provide]                        PROVIDE (__init_array_start, .)
  *(SORT(.init_array.*) SORT(.ctors.*))
  *(.init_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .ctors)
                 [!provide]                        PROVIDE (__init_array_end, .)
 
-.fini_array     0x0000000008005a64        0x0
+.fini_array     0x0000000008005a10        0x0
                 [!provide]                        PROVIDE (__fini_array_start, .)
  *(SORT(.fini_array.*) SORT(.dtors.*))
  *(.fini_array EXCLUDE_FILE(*crtend?.o *crtend.o *crtbegin?.o *crtbegin.o) .dtors)
@@ -232,16 +232,16 @@ LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
 
 .dynamic
  *(.dynamic)
-                0x0000000008005a64                . = DATA_SEGMENT_RELRO_END (., 0x0)
+                0x0000000008005a10                . = DATA_SEGMENT_RELRO_END (., 0x0)
 
-.data           0x0000000008005a68      0x428
+.data           0x0000000008005a10      0x428
  *(.data .data.* .gnu.linkonce.d.*)
- .data          0x0000000008005a68        0x0 init-sf.o
- .data          0x0000000008005a68        0x0 softwareblink.o
- .data          0x0000000008005a68        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-exit.o)
- .data          0x0000000008005a68      0x428 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
- .data          0x0000000008005e90        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-__call_atexit.o)
- .data          0x0000000008005e90        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a(syscalls.o)
+ .data          0x0000000008005a10        0x0 init-sf.o
+ .data          0x0000000008005a10        0x0 template.o
+ .data          0x0000000008005a10        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-exit.o)
+ .data          0x0000000008005a10      0x428 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
+ .data          0x0000000008005e38        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-__call_atexit.o)
+ .data          0x0000000008005e38        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a(syscalls.o)
 
 .data1
  *(.data1)
@@ -252,46 +252,46 @@ LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
  *(.got)
  *(.igot)
 
-.sdata          0x0000000008005e90        0x8
-                0x0000000008006690                __global_pointer$ = (. + 0x800)
+.sdata          0x0000000008005e38        0x8
+                0x0000000008006638                __global_pointer$ = (. + 0x800)
  *(.srodata.cst16)
  *(.srodata.cst8)
  *(.srodata.cst4)
  *(.srodata.cst2)
  *(.srodata .srodata.*)
- .srodata       0x0000000008005e90        0x4 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
-                0x0000000008005e90                _global_impure_ptr
+ .srodata       0x0000000008005e38        0x4 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
+                0x0000000008005e38                _global_impure_ptr
  *(.sdata .sdata.* .gnu.linkonce.s.*)
- .sdata         0x0000000008005e94        0x4 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
-                0x0000000008005e94                _impure_ptr
-                0x0000000008005e98                _edata = .
+ .sdata         0x0000000008005e3c        0x4 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
+                0x0000000008005e3c                _impure_ptr
+                0x0000000008005e40                _edata = .
                 [!provide]                        PROVIDE (edata, .)
-                0x0000000008005e98                . = .
-                0x0000000008005e98                __bss_start = .
+                0x0000000008005e40                . = .
+                0x0000000008005e40                __bss_start = .
 
-.sbss           0x0000000008005e98        0x4
+.sbss           0x0000000008005e40        0x4
  *(.dynsbss)
  *(.sbss .sbss.* .gnu.linkonce.sb.*)
- .sbss          0x0000000008005e98        0x4 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a(syscalls.o)
+ .sbss          0x0000000008005e40        0x4 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a(syscalls.o)
  *(.scommon)
 
-.bss            0x0000000008005ea0       0x10
+.bss            0x0000000008005e48       0x10
  *(.dynbss)
  *(.bss .bss.* .gnu.linkonce.b.*)
- .bss           0x0000000008005ea0        0x0 init-sf.o
- .bss           0x0000000008005ea0        0x0 softwareblink.o
- .bss           0x0000000008005ea0        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-exit.o)
- .bss           0x0000000008005ea0        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
- .bss           0x0000000008005ea0        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-__call_atexit.o)
- .bss           0x0000000008005ea0       0x10 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a(syscalls.o)
+ .bss           0x0000000008005e48        0x0 init-sf.o
+ .bss           0x0000000008005e48        0x0 template.o
+ .bss           0x0000000008005e48        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-exit.o)
+ .bss           0x0000000008005e48        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
+ .bss           0x0000000008005e48        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-__call_atexit.o)
+ .bss           0x0000000008005e48       0x10 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a(syscalls.o)
  *(COMMON)
-                0x0000000008005eb0                . = ALIGN ((. != 0x0)?0x4:0x1)
-                0x0000000008005eb0                . = ALIGN (0x4)
-                0x0000000008005eb0                . = SEGMENT_START ("ldata-segment", .)
-                0x0000000008005eb0                . = ALIGN (0x4)
-                0x0000000008005eb0                _end = .
+                0x0000000008005e58                . = ALIGN ((. != 0x0)?0x4:0x1)
+                0x0000000008005e58                . = ALIGN (0x4)
+                0x0000000008005e58                . = SEGMENT_START ("ldata-segment", .)
+                0x0000000008005e58                . = ALIGN (0x4)
+                0x0000000008005e58                _end = .
                 [!provide]                        PROVIDE (end, .)
-                0x0000000008005eb0                . = DATA_SEGMENT_END (.)
+                0x0000000008005e58                . = DATA_SEGMENT_END (.)
 
 .stab
  *(.stab)
@@ -313,7 +313,7 @@ LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
 
 .comment        0x0000000000000000       0x11
  *(.comment)
- .comment       0x0000000000000000       0x11 softwareblink.o
+ .comment       0x0000000000000000       0x11 template.o
                                          0x12 (size before relaxing)
  .comment       0x0000000000000011       0x12 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-exit.o)
  .comment       0x0000000000000011       0x12 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
@@ -426,4 +426,4 @@ LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
  *(.note.GNU-stack)
  *(.gnu_debuglink)
  *(.gnu.lto_*)
-OUTPUT(softwareblink-sf elf32-littleriscv)
+OUTPUT(template-sf elf32-littleriscv)
