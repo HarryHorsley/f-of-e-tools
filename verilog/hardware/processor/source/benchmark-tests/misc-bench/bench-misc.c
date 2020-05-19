@@ -26,7 +26,7 @@
  Boston, MA 02111-1307, USA.  */
  
  
- #include <benchs.h>
+ #include "benchs.h"
  #include <stddef.h>
  #include <string.h>
  
