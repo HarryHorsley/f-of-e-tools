@@ -51,7 +51,6 @@ void test_for_int_div(void) {
 }
 
 int main(void) {
-  printf("Iterative programs are run at %d iterations.\n", DEFAULT_ITERATIONS);
 
   test_for_add();
 
