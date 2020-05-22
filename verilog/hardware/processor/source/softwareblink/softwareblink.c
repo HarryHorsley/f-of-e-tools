@@ -7,7 +7,7 @@ main(void)
 	 *	to the address. See the PCF file for how those 8 pins are
 	 *	mapped.
 	 */
-	volatile unsigned int *		debugLEDs = (unsigned int *)0x2000;
+	volatile unsigned int *		debugLEDs = (unsigned int *)0x8004000;
 
 	enum
 	{

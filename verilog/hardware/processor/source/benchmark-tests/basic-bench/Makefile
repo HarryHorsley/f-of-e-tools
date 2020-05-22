@@ -4,8 +4,8 @@ include $(TREEROOT)/tools/sunflower/conf/setup.conf
 TARGET-ARCH	= riscv32-elf
 TARGET		= riscv
 
-PROGRAM		= bench-misc
-PROGRAM-SF	= bench-misc-sf
+PROGRAM		= basic-bench
+PROGRAM-SF	= basic-bench-sf
 INIT		= init
 INIT-SF		= init-sf
 
