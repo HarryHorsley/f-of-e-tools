@@ -1,5 +1,5 @@
 newnode		riscv
 sizemem		65536	
-srecl		"template-sf.sr"
+srecl		"softwareblink-sf.sr"
 run
 on

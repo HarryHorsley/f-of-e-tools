@@ -1,11 +1,11 @@
-TREEROOT	= ~/f-of-e-tools/
+TREEROOT	= ../../../../../
 include $(TREEROOT)/tools/sunflower/conf/setup.conf
 
 TARGET-ARCH	= riscv32-elf
 TARGET		= riscv
 
-PROGRAM		= half-adder-bench
-PROGRAM-SF	= half-adder-bench-sf
+PROGRAM		= softwareblink
+PROGRAM-SF	= softwareblink-sf
 INIT		= init
 INIT-SF		= init-sf
 
