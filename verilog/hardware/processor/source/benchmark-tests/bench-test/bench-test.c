@@ -54,65 +54,80 @@
 // 	}
 	
 // }
+#include <iostream>
+#include <complex>
+#define MAX 200
 
-#include <math.h>
-#include <chrono>
-using namespace std;
-using namespace std::chrono;
+#define M_PI 3.1415926535897932384
 
-// timer cribbed from
-// https://gist.github.com/gongzhitaao/7062087
-class Timer
+int log2(int N)    /*function to calculate the log2(.) of int numbers*/
 {
-public:
-    Timer() : beg_(clock_::now()) {}
-    void reset() { beg_ = clock_::now(); }
-    double elapsed() const {
-        return duration_cast<second_>
-            (clock_::now() - beg_).count();
+  int k = N, i = 0;
+  while(k) {
+    k >>= 1;
+    i++;
+  }
+  return i - 1;
+}
+
+int reverse(int N, int n)    //calculating revers number
+{
+  int j, p = 0;
+  for(j = 1; j <= log2(N); j++) {
+    if(n & (1 << (log2(N) - j)))
+      p |= 1 << (j - 1);
+  }
+  return p;
+}
+
+void ordina(complex<double>* f1, int N) //using the reverse order in the array
+{
+  complex<double> f2[MAX];
+  for(int i = 0; i < N; i++)
+    f2[i] = f1[reverse(N, i)];
+  for(int j = 0; j < N; j++)
+    f1[j] = f2[j];
+}
+
+void transform(complex<double>* f, int N) //
+{
+  ordina(f, N);    //first: reverse order
+  complex<double> *W;
+  W = (complex<double> *)malloc(N / 2 * sizeof(complex<double>));
+  W[1] = polar(1., -2. * M_PI / N);
+  W[0] = 1;
+  for(int i = 2; i < N / 2; i++)
+    W[i] = pow(W[1], i);
+  int n = 1;
+  int a = N / 2;
+  for(int j = 0; j < log2(N); j++) {
+    for(int i = 0; i < N; i++) {
+      if(!(i & n)) {
+        complex<double> temp = f[i];
+        complex<double> Temp = W[(i * a) % (n * a)] * f[i + n];
+        f[i] = temp + Temp;
+        f[i + n] = temp - Temp;
+      }
     }
+    n *= 2;
+    a = a / 2;
+  }
+  free(W);
+}
 
-private:
-    typedef high_resolution_clock clock_;
-    typedef duration<double, ratio<1>> second_;
-    time_point<clock_> beg_;
-};
-
-int main(char* argv)
+void FFT(complex<double>* f, int N, double d)
 {
-    double total;
-    Timer tmr;
+  transform(f, N);
+  for(int i = 0; i < N; i++)
+    f[i] *= d; //multiplying by step
+}
 
-#define randf() ((double) rand()) / ((double) (RAND_MAX))
-#define OP_TEST(name, expr)               \
-    total = 0.0;                          \
-    srand(42);                            \
-    tmr.reset();                          \
-    for (int i = 0; i < 100000000; i++) { \
-        double r1 = randf();              \
-        double r2 = randf();              \
-        total += expr;                    \
-    }                                     \
-    double name = tmr.elapsed();          \
-    printf(#name);                        \
-    printf(" %.7f\n", name - baseline);
+int main()
+{
+complex<double> vec[MAX];
 
-    // time the baseline code:
-    //   for loop with no extra math op
-    OP_TEST(baseline, 1.0)
-
-    // time various floating point operations.
-    //   subtracts off the baseline time to give
-    //   a better approximation of the cost
-    //   for just the specified operation
-    OP_TEST(plus, r1 + r2)
-    OP_TEST(minus, r1 - r2)
-    OP_TEST(mult, r1 * r2)
-    OP_TEST(div, r1 / r2)
-    OP_TEST(sqrt, sqrt(r1))
-    OP_TEST(sin, sin(r1))
-    OP_TEST(cos, cos(r1))
-    OP_TEST(tan, tan(r1))
-    OP_TEST(atan, atan(r1))
-    OP_TEST(exp, exp(r1))
+vec[0] = 1;
+vec[1] = 0;
+FFT(vec, int 2, double 1);
+  return 0;
 }
