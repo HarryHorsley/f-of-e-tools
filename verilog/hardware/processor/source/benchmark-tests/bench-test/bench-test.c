@@ -61,9 +61,9 @@ int main(void)
 	 */
 	volatile unsigned int *		debugLEDs = (unsigned int *)0x8004000;
 
-	while(1)
-	{
-		*debugLEDs = 0xFF;
+	
+
+	*debugLEDs = 0xFF;
 		
 	
 	vector v;
@@ -75,6 +75,6 @@ int main(void)
 // 	_fft(buf, buf, 1, 1);
 // 	//fft(buf, 4);
     
-		*debugLEDs = 0x00;		
-	}
+	*debugLEDs = 0x00;		
+	
 }
