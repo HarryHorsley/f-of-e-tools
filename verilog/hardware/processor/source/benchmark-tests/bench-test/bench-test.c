@@ -4,8 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "vector.h"
-
 typedef struct vector_ {
     void** data;
     int size;
