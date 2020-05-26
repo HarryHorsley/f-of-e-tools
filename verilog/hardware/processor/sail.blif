@@ -7516,318 +7516,334 @@
 .names $true
 1
 .names $undef
-.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O I3=out_SB_LUT4_O_I3 O=out[13]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 1111000011111111
-.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_1_I2 I3=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O O=out[8]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 1111000000000000
-.gate SB_LUT4 I0=out_SB_LUT4_O_10_I0 I1=out_SB_LUT4_O_10_I1 I2=addr[6] I3=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O O=out[23]
+.gate SB_LUT4 I0=out_SB_LUT4_O_I0 I1=out_SB_LUT4_O_I1 I2=addr[6] I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out[9]
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0011010100000000
-.gate SB_LUT4 I0=addr[3] I1=addr[2] I2=addr[4] I3=addr[5] O=out_SB_LUT4_O_10_I0
+.param LUT_INIT 0011101000000000
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_1_I1 I2=out_SB_LUT4_O_1_I2 I3=out[1] O=out[5]
 .attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1101010010111111
-.gate SB_LUT4 I0=addr[5] I1=addr[2] I2=addr[3] I3=addr[4] O=out_SB_LUT4_O_10_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0101110000110010
-.gate SB_LUT4 I0=out_SB_LUT4_O_11_I0 I1=out_SB_LUT4_O_8_I1 I2=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O I3=out_SB_LUT4_O_11_I3 O=out[22]
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 0011111100000000
+.gate SB_LUT4 I0=out_SB_LUT4_O_10_I0 I1=out_SB_LUT4_O_6_I2 I2=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O I3=out_SB_LUT4_O_11_I2 O=out[22]
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 1111111111111000
-.gate SB_LUT4 I0=addr[5] I1=addr[4] I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_11_I0
+.gate SB_LUT4 I0=addr[5] I1=addr[4] I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_10_I0
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 0011101000100010
-.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_11_I3_SB_LUT4_O_I1 I2=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I3=addr[6] O=out_SB_LUT4_O_11_I3
+.gate SB_LUT4 I0=addr[3] I1=addr[2] I2=out_SB_LUT4_O_11_I2 I3=out_SB_LUT4_O_11_I3 O=out[21]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1011101110110000
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_11_I2_SB_LUT4_O_I1 I2=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I3=addr[6] O=out_SB_LUT4_O_11_I2
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
 .param LUT_INIT 0011000000000000
-.gate SB_LUT4 I0=addr[2] I1=addr[5] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_11_I3_SB_LUT4_O_I1
+.gate SB_LUT4 I0=addr[2] I1=addr[5] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_11_I2_SB_LUT4_O_I1
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 0011010111001100
-.gate SB_LUT4 I0=out_SB_LUT4_O_12_I0 I1=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I2=addr[6] I3=out_SB_LUT4_O_12_I3 O=out[21]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1111111101000000
-.gate SB_LUT4 I0=addr[5] I1=addr[4] I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_12_I0
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0100011111111010
-.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I2=out_SB_LUT4_O_9_I2_SB_LUT4_O_I3 I3=out_SB_LUT4_O_12_I3_SB_LUT4_O_I3 O=out_SB_LUT4_O_12_I3
+.gate SB_LUT4 I0=$false I1=addr[4] I2=out_SB_LUT4_O_9_I2_SB_LUT4_O_I2 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out_SB_LUT4_O_11_I3
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 1100000000000000
-.gate SB_LUT4 I0=$false I1=addr[3] I2=addr[2] I3=addr[4] O=out_SB_LUT4_O_12_I3_SB_LUT4_O_I3
+.param LUT_INIT 0011000000000000
+.gate SB_LUT4 I0=addr[5] I1=out_SB_LUT4_O_12_I1 I2=out_SB_LUT4_O_9_I1 I3=out_SB_LUT4_O_12_I3 O=out[20]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0100000011111111
+.gate SB_LUT4 I0=$false I1=addr[4] I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_12_I1
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 0000000011001111
-.gate SB_LUT4 I0=addr[6] I1=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I2=out_SB_LUT4_O_13_I2 I3=out_SB_LUT4_O_13_I3 O=out[20]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1000000011111111
-.gate SB_LUT4 I0=addr[5] I1=addr[4] I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_13_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0001000000000001
-.gate SB_LUT4 I0=addr[5] I1=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I2=out_SB_LUT4_O_13_I3_SB_LUT4_O_I2 I3=out[19] O=out_SB_LUT4_O_13_I3
+.param LUT_INIT 0011000000000011
+.gate SB_LUT4 I0=addr[5] I1=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I2=out_SB_LUT4_O_12_I3_SB_LUT4_O_I2 I3=out[19] O=out_SB_LUT4_O_12_I3
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 0000000001111111
-.gate SB_LUT4 I0=addr[3] I1=addr[2] I2=addr[4] I3=addr[6] O=out_SB_LUT4_O_13_I3_SB_LUT4_O_I2
+.gate SB_LUT4 I0=addr[3] I1=addr[2] I2=addr[4] I3=addr[6] O=out_SB_LUT4_O_12_I3_SB_LUT4_O_I2
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 0010101010000011
-.gate SB_LUT4 I0=out_SB_LUT4_O_14_I0 I1=out_SB_LUT4_O_14_I1 I2=out_SB_LUT4_O_14_I2 I3=addr[7] O=out[19]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1000000000000000
-.gate SB_LUT4 I0=out_SB_LUT4_O_14_I0 I1=out_SB_LUT4_O_14_I1 I2=out_SB_LUT4_O_14_I2 I3=addr[7] O=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1000000000000000
-.gate SB_LUT4 I0=$false I1=$false I2=addr[7] I3=out_SB_LUT4_O_14_I0 O=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O
+.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_13_I2 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O O=out[18]
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 0000111100000000
-.gate SB_LUT4 I0=addr[11] I1=addr[10] I2=addr[9] I3=addr[8] O=out_SB_LUT4_O_14_I0
+.param LUT_INIT 1111111111110000
+.gate SB_LUT4 I0=out_SB_LUT4_O_27_I0 I1=out_SB_LUT4_O_26_I2 I2=out_SB_LUT4_O_13_I2_SB_LUT4_O_I2 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out_SB_LUT4_O_13_I2
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0000000000000001
-.gate SB_LUT4 I0=$false I1=addr[2] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_14_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 0000000000000011
-.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_14_I2 I3=addr[2] O=out_SB_LUT4_O_28_I0_SB_LUT4_O_I3
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 1111000000000000
-.gate SB_LUT4 I0=$false I1=$false I2=addr[6] I3=addr[5] O=out_SB_LUT4_O_14_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 0000000000001111
-.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_15_I1 I2=out_SB_LUT4_O_15_I2 I3=out[19] O=out[18]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 1111111100110000
-.gate SB_LUT4 I0=addr[6] I1=addr[2] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_15_I1
+.param LUT_INIT 0000000100000000
+.gate SB_LUT4 I0=addr[6] I1=addr[2] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_13_I2_SB_LUT4_O_I2
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 0000000101000000
-.gate SB_LUT4 I0=out_SB_LUT4_O_14_I1 I1=addr[6] I2=addr[5] I3=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O O=out_SB_LUT4_O_15_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0111110000000000
-.gate SB_LUT4 I0=out_SB_LUT4_O_16_I0 I1=out_SB_LUT4_O_16_I1 I2=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I3=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O O=out[17]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1111111111100000
-.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_9_I2_SB_LUT4_O_I3 I3=out_SB_LUT4_O_16_I0_SB_LUT4_O_I3 O=out_SB_LUT4_O_16_I0
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 1111000000000000
-.gate SB_LUT4 I0=$false I1=$false I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_16_I0_SB_LUT4_O_I3
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 1111000000000000
-.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_16_I1_SB_LUT4_O_I2 I3=addr[6] O=out_SB_LUT4_O_16_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 0000111100000000
-.gate SB_LUT4 I0=addr[3] I1=addr[5] I2=addr[4] I3=addr[2] O=out_SB_LUT4_O_16_I1_SB_LUT4_O_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0011110101000101
-.gate SB_LUT4 I0=addr[6] I1=out_SB_LUT4_O_17_I1 I2=out_SB_LUT4_O_18_I2 I3=out[1] O=out[16]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0100111100000000
-.gate SB_LUT4 I0=addr[4] I1=addr[2] I2=addr[5] I3=addr[3] O=out_SB_LUT4_O_17_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0000001100001010
-.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_18_I2 I3=out[1] O=out[15]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 0000111100000000
-.gate SB_LUT4 I0=addr[6] I1=out_SB_LUT4_O_18_I2_SB_LUT4_O_I1 I2=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O I3=out_SB_LUT4_O_16_I0 O=out_SB_LUT4_O_18_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0000000000001101
-.gate SB_LUT4 I0=addr[4] I1=addr[2] I2=addr[3] I3=addr[5] O=out_SB_LUT4_O_18_I2_SB_LUT4_O_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0100111110011101
-.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_25_I2 I3=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O O=out[14]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 1111111111110000
-.gate SB_LUT4 I0=$false I1=addr[3] I2=out_SB_LUT4_O_1_I2_SB_LUT4_O_I2 I3=out_SB_LUT4_O_1_I2_SB_LUT4_O_I3 O=out_SB_LUT4_O_1_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 0011000011001111
-.gate SB_LUT4 I0=addr[5] I1=addr[4] I2=addr[2] I3=addr[6] O=out_SB_LUT4_O_1_I2_SB_LUT4_O_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1110001111111111
-.gate SB_LUT4 I0=addr[5] I1=addr[6] I2=addr[4] I3=addr[2] O=out_SB_LUT4_O_1_I2_SB_LUT4_O_I3
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1100101101010000
-.gate SB_LUT4 I0=addr[6] I1=out_SB_LUT4_O_2_I1 I2=out_SB_LUT4_O_2_I2 I3=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O O=out[4]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1111010000000000
-.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_25_I2 I2=out_SB_LUT4_O_20_I2 I3=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O O=out[12]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 1111111111111100
-.gate SB_LUT4 I0=addr[4] I1=addr[3] I2=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I3=out_SB_LUT4_O_28_I0_SB_LUT4_O_I3 O=out_SB_LUT4_O_20_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0001000000000000
-.gate SB_LUT4 I0=addr[5] I1=addr[3] I2=out_SB_LUT4_O_8_I1 I3=out_SB_LUT4_O_21_I3 O=out[11]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0001000000000000
-.gate SB_LUT4 I0=$false I1=$false I2=addr[2] I3=addr[4] O=out_SB_LUT4_O_21_I3
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 1111000000000000
-.gate SB_LUT4 I0=addr[6] I1=out_SB_LUT4_O_23_I1 I2=out_SB_LUT4_O_22_I2 I3=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O O=out[10]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0100101100000000
-.gate SB_LUT4 I0=addr[2] I1=addr[5] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_22_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0001000000000100
-.gate SB_LUT4 I0=out_SB_LUT4_O_23_I0 I1=out_SB_LUT4_O_23_I1 I2=addr[6] I3=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O O=out[9]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0101001100000000
-.gate SB_LUT4 I0=addr[3] I1=addr[4] I2=addr[5] I3=addr[2] O=out_SB_LUT4_O_23_I0
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1010100000011100
-.gate SB_LUT4 I0=addr[3] I1=addr[5] I2=addr[4] I3=addr[2] O=out_SB_LUT4_O_23_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0100101100110011
-.gate SB_LUT4 I0=out_SB_LUT4_O_24_I0 I1=out_SB_LUT4_O_24_I1 I2=addr[6] I3=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O O=out[7]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1100101000000000
-.gate SB_LUT4 I0=addr[5] I1=addr[2] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_24_I0
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1110000000001000
-.gate SB_LUT4 I0=addr[2] I1=addr[4] I2=addr[5] I3=addr[3] O=out_SB_LUT4_O_24_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1101001110101100
-.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_27_I2 I2=out_SB_LUT4_O_25_I2 I3=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O O=out[6]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 1111111111111100
-.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_25_I2_SB_LUT4_O_I1 I2=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I3=addr[6] O=out_SB_LUT4_O_25_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 0011000000000000
-.gate SB_LUT4 I0=addr[5] I1=addr[2] I2=addr[3] I3=addr[4] O=out_SB_LUT4_O_25_I2_SB_LUT4_O_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0111111011111111
-.gate SB_LUT4 I0=out_SB_LUT4_O_26_I0 I1=out_SB_LUT4_O_26_I1 I2=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I3=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O O=out[5]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1111111110110000
-.gate SB_LUT4 I0=$false I1=$false I2=addr[6] I3=out_SB_LUT4_O_26_I0_SB_LUT4_O_I3 O=out_SB_LUT4_O_26_I0
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 0000111100000000
-.gate SB_LUT4 I0=addr[4] I1=addr[2] I2=addr[3] I3=addr[5] O=out_SB_LUT4_O_26_I0_SB_LUT4_O_I3
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0100101100000000
-.gate SB_LUT4 I0=addr[5] I1=addr[2] I2=out_SB_LUT4_O_26_I1_SB_LUT4_O_I2 I3=addr[6] O=out_SB_LUT4_O_26_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1111000010111011
-.gate SB_LUT4 I0=addr[4] I1=addr[3] I2=addr[5] I3=addr[2] O=out_SB_LUT4_O_26_I1_SB_LUT4_O_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0001011111100000
-.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_27_I2 I3=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O O=out[3]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 1111111111110000
-.gate SB_LUT4 I0=out_SB_LUT4_O_27_I2_SB_LUT4_O_I0 I1=out_SB_LUT4_O_28_I1_SB_LUT4_O_I3 I2=out_SB_LUT4_O_2_I2 I3=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O O=out_SB_LUT4_O_27_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0000101100000000
-.gate SB_LUT4 I0=out_SB_LUT4_O_28_I0 I1=out_SB_LUT4_O_28_I1 I2=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I3=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O O=out[2]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1111111110110000
-.gate SB_LUT4 I0=$false I1=addr[3] I2=addr[4] I3=out_SB_LUT4_O_28_I0_SB_LUT4_O_I3 O=out_SB_LUT4_O_28_I0
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 1100111100000000
-.gate SB_LUT4 I0=addr[2] I1=addr[6] I2=out_SB_LUT4_O_3_I1 I3=out_SB_LUT4_O_28_I1_SB_LUT4_O_I3 O=out_SB_LUT4_O_28_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1011111100000000
-.gate SB_LUT4 I0=out_SB_LUT4_O_14_I1 I1=addr[6] I2=out_SB_LUT4_O_28_I1_SB_LUT4_O_I3_SB_LUT4_O_I2 I3=addr[5] O=out_SB_LUT4_O_28_I1_SB_LUT4_O_I3
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0000011111111111
-.gate SB_LUT4 I0=$false I1=addr[3] I2=addr[4] I3=addr[2] O=out_SB_LUT4_O_28_I1_SB_LUT4_O_I3_SB_LUT4_O_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 0011000000000000
-.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I3=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O O=out[1]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 1111111111110000
-.gate SB_LUT4 I0=addr[5] I1=addr[2] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_2_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1101001100010101
-.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_2_I2_SB_LUT4_O_I2 I3=addr[6] O=out_SB_LUT4_O_2_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 0000111100000000
-.gate SB_LUT4 I0=addr[2] I1=addr[4] I2=addr[3] I3=addr[5] O=out_SB_LUT4_O_2_I2_SB_LUT4_O_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1010011111001111
-.gate SB_LUT4 I0=addr[2] I1=out_SB_LUT4_O_3_I1 I2=out_SB_LUT4_O_8_I1 I3=out[28] O=out[30]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1111111101000000
-.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_3_I1 I3=addr[2] O=out_SB_LUT4_O_27_I2_SB_LUT4_O_I0
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
-.param LUT_INIT 1111000000000000
-.gate SB_LUT4 I0=$false I1=addr[5] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_3_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 0000001100000000
-.gate SB_LUT4 I0=out_SB_LUT4_O_5_I1 I1=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I2=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O I3=out_SB_LUT4_O_8_I3 O=out[31]
+.gate SB_LUT4 I0=out_SB_LUT4_O_14_I0 I1=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I2=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O I3=out_SB_LUT4_O_14_I3 O=out[17]
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 1111111111111000
-.gate SB_LUT4 I0=out_SB_LUT4_O_5_I0 I1=out_SB_LUT4_O_5_I1 I2=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I3=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O O=out[28]
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_9_I2_SB_LUT4_O_I2 I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_14_I0
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 1100000000000000
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_14_I3_SB_LUT4_O_I1 I2=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I3=addr[6] O=out_SB_LUT4_O_14_I3
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 0011000000000000
+.gate SB_LUT4 I0=addr[3] I1=addr[5] I2=addr[4] I3=addr[2] O=out_SB_LUT4_O_14_I3_SB_LUT4_O_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0011110101000101
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_15_I1 I2=out_SB_LUT4_O_16_I2 I3=out[1] O=out[16]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 1100111100000000
+.gate SB_LUT4 I0=addr[4] I1=addr[2] I2=addr[3] I3=out_SB_LUT4_O_26_I2 O=out_SB_LUT4_O_15_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0011101000000000
+.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_16_I2 I3=out[1] O=out[15]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 0000111100000000
+.gate SB_LUT4 I0=out_SB_LUT4_O_16_I2_SB_LUT4_O_I0 I1=addr[6] I2=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O I3=out_SB_LUT4_O_14_I0 O=out_SB_LUT4_O_16_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0000000000000111
+.gate SB_LUT4 I0=addr[4] I1=addr[3] I2=addr[2] I3=addr[5] O=out_SB_LUT4_O_16_I2_SB_LUT4_O_I0
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1000110001001010
+.gate SB_LUT4 I0=out_SB_LUT4_O_17_I0 I1=out_SB_LUT4_O_24_I1 I2=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I3=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O O=out[14]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1111111110110000
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_26_I2 I2=out_SB_LUT4_O_21_I2_SB_LUT4_O_I1 I3=addr[2] O=out_SB_LUT4_O_17_I0
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 1100000000000000
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_18_I1 I2=out_SB_LUT4_O_6_I2 I3=out_SB_LUT4_O_18_I3 O=out[13]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 0011000011111111
+.gate SB_LUT4 I0=addr[3] I1=addr[2] I2=addr[5] I3=addr[4] O=out_SB_LUT4_O_18_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1100101100101111
+.gate SB_LUT4 I0=addr[6] I1=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I2=out_SB_LUT4_O_18_I3_SB_LUT4_O_I2 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O O=out_SB_LUT4_O_18_I3
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0000000001111111
+.gate SB_LUT4 I0=addr[2] I1=addr[3] I2=addr[5] I3=addr[4] O=out_SB_LUT4_O_18_I3_SB_LUT4_O_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0011111010100111
+.gate SB_LUT4 I0=out_SB_LUT4_O_1_I1 I1=out_SB_LUT4_O_19_I1 I2=out_SB_LUT4_O_24_I1 I3=out[1] O=out[12]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0100111100000000
+.gate SB_LUT4 I0=$false I1=$false I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_19_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 0000000000001111
+.gate SB_LUT4 I0=$false I1=addr[2] I2=out_SB_LUT4_O_26_I2 I3=out[19] O=out_SB_LUT4_O_1_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 0000000000111111
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_1_I2_SB_LUT4_O_I1 I2=out_SB_LUT4_O_1_I2_SB_LUT4_O_I2 I3=addr[6] O=out_SB_LUT4_O_1_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 0000111100110011
+.gate SB_LUT4 I0=addr[4] I1=addr[2] I2=addr[3] I3=addr[5] O=out_SB_LUT4_O_1_I2_SB_LUT4_O_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0100101100000000
+.gate SB_LUT4 I0=addr[5] I1=addr[4] I2=addr[3] I3=addr[2] O=out_SB_LUT4_O_1_I2_SB_LUT4_O_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1110100001010111
+.gate SB_LUT4 I0=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I1=out_SB_LUT4_O_2_I1 I2=out_SB_LUT4_O_4_I0 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O O=out[30]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1111111111110010
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I2=out_SB_LUT4_O_26_I2 I3=out_SB_LUT4_O_20_I3 O=out[11]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 1100000000000000
+.gate SB_LUT4 I0=$false I1=addr[3] I2=addr[4] I3=addr[2] O=out_SB_LUT4_O_20_I3
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 0011000000000000
+.gate SB_LUT4 I0=out_SB_LUT4_O_21_I0 I1=addr[6] I2=out_SB_LUT4_O_21_I2 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out[10]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0100111100000000
+.gate SB_LUT4 I0=addr[2] I1=addr[5] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_21_I0
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0001000000000100
+.gate SB_LUT4 I0=out_SB_LUT4_O_22_I1 I1=out_SB_LUT4_O_21_I2_SB_LUT4_O_I1 I2=out_SB_LUT4_O_21_I2_SB_LUT4_O_I2 I3=out_SB_LUT4_O_26_I2 O=out_SB_LUT4_O_21_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0000001100111010
+.gate SB_LUT4 I0=$false I1=$false I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_21_I2_SB_LUT4_O_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 1111000000000000
+.gate SB_LUT4 I0=$false I1=$false I2=addr[2] I3=addr[4] O=out_SB_LUT4_O_21_I2_SB_LUT4_O_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 1111000000000000
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_22_I1 I2=out_SB_LUT4_O_9_I1 I3=out_SB_LUT4_O_22_I3 O=out[8]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 1111111100110000
+.gate SB_LUT4 I0=addr[4] I1=addr[5] I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_22_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1110001000000111
+.gate SB_LUT4 I0=out_SB_LUT4_O_1_I2_SB_LUT4_O_I1 I1=out_SB_LUT4_O_22_I3_SB_LUT4_O_I1 I2=addr[6] I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out_SB_LUT4_O_22_I3
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0000000100000000
+.gate SB_LUT4 I0=addr[5] I1=addr[2] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_22_I3_SB_LUT4_O_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0001010001000001
+.gate SB_LUT4 I0=out_SB_LUT4_O_23_I0 I1=out_SB_LUT4_O_23_I1 I2=out_SB_LUT4_O_23_I2 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out[7]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1111010000000000
+.gate SB_LUT4 I0=addr[4] I1=addr[2] I2=addr[3] I3=addr[5] O=out_SB_LUT4_O_23_I0
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0100001100000000
+.gate SB_LUT4 I0=addr[5] I1=addr[4] I2=addr[3] I3=addr[6] O=out_SB_LUT4_O_23_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1011111000000000
+.gate SB_LUT4 I0=addr[3] I1=addr[4] I2=addr[6] I3=out_SB_LUT4_O_23_I2_SB_LUT4_O_I3 O=out_SB_LUT4_O_23_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0000110100000000
+.gate SB_LUT4 I0=addr[4] I1=addr[3] I2=addr[5] I3=addr[2] O=out_SB_LUT4_O_23_I2_SB_LUT4_O_I3
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1101110011000000
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_24_I1 I2=out[1] I3=out[3] O=out[6]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 1111111100110000
+.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_24_I1_SB_LUT4_O_I2 I3=addr[6] O=out_SB_LUT4_O_24_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 1111000011111111
+.gate SB_LUT4 I0=addr[5] I1=addr[2] I2=addr[3] I3=addr[4] O=out_SB_LUT4_O_24_I1_SB_LUT4_O_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0111111011111111
+.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_25_I2 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out[4]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 0000111100000000
+.gate SB_LUT4 I0=$false I1=addr[3] I2=out_SB_LUT4_O_25_I2_SB_LUT4_O_I2 I3=out_SB_LUT4_O_25_I2_SB_LUT4_O_I3 O=out_SB_LUT4_O_25_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 0011000011001111
+.gate SB_LUT4 I0=addr[4] I1=addr[6] I2=addr[5] I3=addr[2] O=out_SB_LUT4_O_25_I2_SB_LUT4_O_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1010011111010100
+.gate SB_LUT4 I0=addr[2] I1=addr[5] I2=addr[4] I3=addr[6] O=out_SB_LUT4_O_25_I2_SB_LUT4_O_I3
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0100011110110101
+.gate SB_LUT4 I0=out_SB_LUT4_O_26_I0 I1=out_SB_LUT4_O_26_I1 I2=out_SB_LUT4_O_26_I2 I3=addr[7] O=out[19]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1000000000000000
+.gate SB_LUT4 I0=out_SB_LUT4_O_26_I0 I1=out_SB_LUT4_O_26_I1 I2=out_SB_LUT4_O_26_I2 I3=addr[7] O=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1000000000000000
+.gate SB_LUT4 I0=$false I1=$false I2=addr[7] I3=out_SB_LUT4_O_26_I0 O=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 0000111100000000
+.gate SB_LUT4 I0=addr[11] I1=addr[10] I2=addr[9] I3=addr[8] O=out_SB_LUT4_O_26_I0
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0000000000000001
+.gate SB_LUT4 I0=$false I1=addr[2] I2=addr[4] I3=addr[3] O=out_SB_LUT4_O_26_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 0000000000000011
+.gate SB_LUT4 I0=$false I1=$false I2=addr[6] I3=addr[5] O=out_SB_LUT4_O_26_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 0000000000001111
+.gate SB_LUT4 I0=out_SB_LUT4_O_27_I0 I1=out_SB_LUT4_O_27_I1 I2=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I3=out[19] O=out[3]
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 1111111111100000
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_26_I1 I2=addr[6] I3=addr[5] O=out_SB_LUT4_O_27_I0
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 1100000000000000
+.gate SB_LUT4 I0=out_SB_LUT4_O_20_I3 I1=addr[5] I2=out_SB_LUT4_O_27_I1_SB_LUT4_O_I2 I3=addr[6] O=out_SB_LUT4_O_27_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0000000011111000
+.gate SB_LUT4 I0=addr[5] I1=addr[4] I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_27_I1_SB_LUT4_O_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0001000000000000
+.gate SB_LUT4 I0=out_SB_LUT4_O_28_I0 I1=out_SB_LUT4_O_28_I1 I2=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I3=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O O=out[2]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1111111110110000
+.gate SB_LUT4 I0=addr[3] I1=addr[4] I2=out_SB_LUT4_O_26_I2 I3=addr[2] O=out_SB_LUT4_O_28_I0
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1011000000000000
+.gate SB_LUT4 I0=addr[5] I1=out_SB_LUT4_O_20_I3 I2=out_SB_LUT4_O_27_I0 I3=out_SB_LUT4_O_28_I1_SB_LUT4_O_I3 O=out_SB_LUT4_O_28_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0000000000000111
+.gate SB_LUT4 I0=addr[5] I1=addr[4] I2=out_SB_LUT4_O_2_I1_SB_LUT4_O_I1 I3=addr[6] O=out_SB_LUT4_O_28_I1_SB_LUT4_O_I3
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0001000000000000
+.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I3=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O O=out[1]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 1111111111110000
+.gate SB_LUT4 I0=addr[4] I1=out_SB_LUT4_O_2_I1_SB_LUT4_O_I1 I2=out_SB_LUT4_O_26_I2 I3=out_SB_LUT4_O_5_I0 O=out_SB_LUT4_O_2_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0000000010111111
+.gate SB_LUT4 I0=$false I1=$false I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_2_I1_SB_LUT4_O_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 0000111100000000
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_7_I1 I2=out_SB_LUT4_O_4_I0 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O O=out[31]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 1111111111111100
+.gate SB_LUT4 I0=out_SB_LUT4_O_4_I0 I1=out_SB_LUT4_O_5_I0 I2=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I3=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O O=out[28]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1111111111100000
+.gate SB_LUT4 I0=$false I1=addr[6] I2=out_SB_LUT4_O_4_I0_SB_LUT4_O_I2 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out_SB_LUT4_O_4_I0
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 0011000000000000
+.gate SB_LUT4 I0=addr[5] I1=addr[2] I2=addr[3] I3=addr[4] O=out_SB_LUT4_O_4_I0_SB_LUT4_O_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0010001100001010
+.gate SB_LUT4 I0=out_SB_LUT4_O_5_I0 I1=out_SB_LUT4_O_5_I1 I2=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I3=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O O=out[27]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1111111110110000
 .gate SB_LUT4 I0=$false I1=$false I2=addr[6] I3=out_SB_LUT4_O_5_I0_SB_LUT4_O_I3 O=out_SB_LUT4_O_5_I0
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
@@ -7836,78 +7852,90 @@
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 1001110011010101
-.gate SB_LUT4 I0=addr[3] I1=addr[4] I2=out_SB_LUT4_O_5_I1_SB_LUT4_O_I2 I3=addr[6] O=out_SB_LUT4_O_5_I1
+.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_5_I1_SB_LUT4_O_I2 I3=addr[6] O=out_SB_LUT4_O_5_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 1111111111110000
+.gate SB_LUT4 I0=addr[4] I1=addr[5] I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_5_I1_SB_LUT4_O_I2
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 0000000000001101
-.gate SB_LUT4 I0=addr[2] I1=addr[3] I2=addr[5] I3=addr[4] O=out_SB_LUT4_O_5_I1_SB_LUT4_O_I2
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1010111000001111
-.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_7_I1 I2=out_SB_LUT4_O_8_I1 I3=out_SB_LUT4_O_6_I3 O=out[27]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 0011000011111111
-.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_5_I0 I2=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I3=out[19] O=out_SB_LUT4_O_6_I3
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
-.param LUT_INIT 0000000000111111
-.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_7_I1 I2=out_SB_LUT4_O_8_I1 I3=out_SB_LUT4_O_8_I3 O=out[26]
+.param LUT_INIT 1101001110110001
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_6_I1 I2=out_SB_LUT4_O_6_I2 I3=out_SB_LUT4_O_7_I1 O=out[26]
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
 .param LUT_INIT 1111111100110000
-.gate SB_LUT4 I0=addr[5] I1=addr[2] I2=addr[3] I3=addr[4] O=out_SB_LUT4_O_7_I1
+.gate SB_LUT4 I0=addr[5] I1=addr[2] I2=addr[3] I3=addr[4] O=out_SB_LUT4_O_6_I1
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 1101110011010101
-.gate SB_LUT4 I0=out_SB_LUT4_O_8_I0 I1=out_SB_LUT4_O_8_I1 I2=out_SB_LUT4_O_14_I0_SB_LUT4_I0_O I3=out_SB_LUT4_O_8_I3 O=out[25]
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1111111111110100
-.gate SB_LUT4 I0=addr[3] I1=addr[5] I2=addr[4] I3=addr[2] O=out_SB_LUT4_O_8_I0
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1111101100000011
-.gate SB_LUT4 I0=$false I1=$false I2=addr[6] I3=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O O=out_SB_LUT4_O_8_I1
+.gate SB_LUT4 I0=$false I1=$false I2=addr[6] I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out_SB_LUT4_O_6_I2
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
 .param LUT_INIT 0000111100000000
-.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_8_I3_SB_LUT4_O_I1 I2=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O I3=addr[6] O=out_SB_LUT4_O_8_I3
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_7_I1 I2=out_SB_LUT4_O_7_I2 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I0_O O=out[25]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 1111111111111100
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_7_I1_SB_LUT4_O_I1 I2=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I3=addr[6] O=out_SB_LUT4_O_7_I1
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
 .param LUT_INIT 0011000000000000
-.gate SB_LUT4 I0=addr[3] I1=addr[4] I2=addr[2] I3=addr[5] O=out_SB_LUT4_O_8_I3_SB_LUT4_O_I1
+.gate SB_LUT4 I0=addr[3] I1=addr[4] I2=addr[2] I3=addr[5] O=out_SB_LUT4_O_7_I1_SB_LUT4_O_I1
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 0100001100001010
-.gate SB_LUT4 I0=out_SB_LUT4_O_9_I0 I1=addr[6] I2=out_SB_LUT4_O_9_I2 I3=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O O=out[24]
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_7_I2_SB_LUT4_O_I1 I2=addr[6] I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out_SB_LUT4_O_7_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 0000001100000000
+.gate SB_LUT4 I0=addr[3] I1=addr[5] I2=addr[4] I3=addr[2] O=out_SB_LUT4_O_7_I2_SB_LUT4_O_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1111101100000011
+.gate SB_LUT4 I0=out_SB_LUT4_O_8_I0 I1=addr[6] I2=out_SB_LUT4_O_8_I2 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out[24]
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 1111010000000000
-.gate SB_LUT4 I0=addr[4] I1=addr[5] I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_9_I0
+.gate SB_LUT4 I0=addr[4] I1=addr[5] I2=addr[2] I3=addr[3] O=out_SB_LUT4_O_8_I0
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 1110011111111011
-.gate SB_LUT4 I0=addr[2] I1=addr[4] I2=addr[3] I3=out_SB_LUT4_O_9_I2_SB_LUT4_O_I3 O=out_SB_LUT4_O_9_I2
+.gate SB_LUT4 I0=addr[2] I1=addr[4] I2=addr[3] I3=out_SB_LUT4_O_9_I2_SB_LUT4_O_I2 O=out_SB_LUT4_O_8_I2
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
 .param LUT_INIT 0001100000000000
-.gate SB_LUT4 I0=$false I1=$false I2=addr[6] I3=addr[5] O=out_SB_LUT4_O_9_I2_SB_LUT4_O_I3
+.gate SB_LUT4 I0=out_SB_LUT4_O_9_I0 I1=out_SB_LUT4_O_9_I1 I2=out_SB_LUT4_O_9_I2 I3=out[11] O=out[23]
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 1111111111110100
+.gate SB_LUT4 I0=addr[5] I1=addr[2] I2=addr[3] I3=addr[4] O=out_SB_LUT4_O_9_I0
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
+.param LUT_INIT 0101110000110010
+.gate SB_LUT4 I0=$false I1=$false I2=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O I3=addr[6] O=out_SB_LUT4_O_9_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
+.param LUT_INIT 1111000000000000
+.gate SB_LUT4 I0=$false I1=out_SB_LUT4_O_9_I2_SB_LUT4_O_I1 I2=out_SB_LUT4_O_9_I2_SB_LUT4_O_I2 I3=out_SB_LUT4_O_26_I0_SB_LUT4_I3_O O=out_SB_LUT4_O_9_I2
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 0011000000000000
+.gate SB_LUT4 I0=$false I1=addr[2] I2=addr[3] I3=addr[4] O=out_SB_LUT4_O_9_I2_SB_LUT4_O_I1
+.attr module_not_derived 00000000000000000000000000000001
+.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:51.34-52.52"
+.param LUT_INIT 1100111100001100
+.gate SB_LUT4 I0=$false I1=$false I2=addr[6] I3=addr[5] O=out_SB_LUT4_O_9_I2_SB_LUT4_O_I2
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:46.34-47.52"
 .param LUT_INIT 0000111100000000
-.gate SB_LUT4 I0=out_SB_LUT4_O_I3_SB_LUT4_O_I0 I1=out_SB_LUT4_O_I3_SB_LUT4_O_I1 I2=addr[6] I3=out_SB_LUT4_O_14_I0_SB_LUT4_I3_O O=out_SB_LUT4_O_I3
+.gate SB_LUT4 I0=addr[3] I1=addr[5] I2=addr[2] I3=addr[4] O=out_SB_LUT4_O_I0
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1100101011111111
-.gate SB_LUT4 I0=addr[3] I1=addr[5] I2=addr[2] I3=addr[4] O=out_SB_LUT4_O_I3_SB_LUT4_O_I0
+.param LUT_INIT 1011110001001100
+.gate SB_LUT4 I0=addr[3] I1=addr[4] I2=addr[5] I3=addr[2] O=out_SB_LUT4_O_I1
 .attr module_not_derived 00000000000000000000000000000001
 .attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1100001100111011
-.gate SB_LUT4 I0=addr[2] I1=addr[3] I2=addr[5] I3=addr[4] O=out_SB_LUT4_O_I3_SB_LUT4_O_I1
-.attr module_not_derived 00000000000000000000000000000001
-.attr src "/usr/local/bin/../share/yosys/ice40/cells_map.v:55.33-56.52"
-.param LUT_INIT 1100000101011000
+.param LUT_INIT 1010100000011100
 .names $true instruction_memory[0][0]
 1 1
 .names $true instruction_memory[0][1]
@@ -59198,9 +59226,9 @@
 1 1
 .names $false instruction_memory[7][12]
 1 1
-.names $true instruction_memory[7][13]
+.names $false instruction_memory[7][13]
 1 1
-.names $false instruction_memory[7][14]
+.names $true instruction_memory[7][14]
 1 1
 .names $false instruction_memory[7][15]
 1 1
@@ -59226,7 +59254,7 @@
 1 1
 .names $false instruction_memory[7][26]
 1 1
-.names $false instruction_memory[7][27]
+.names $true instruction_memory[7][27]
 1 1
 .names $false instruction_memory[7][28]
 1 1
