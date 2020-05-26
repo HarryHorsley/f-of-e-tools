@@ -69,7 +69,7 @@ int log2(int N)    /*function to calculate the log2(.) of int numbers*/
   return i - 1;
 }
 
-int reverse(int N, int n)    //calculating revers number
+int reverse(int N, int n)    //calculating reverse number
 {
   int j, p = 0;
   for(j = 1; j <= log2(N); j++) {
@@ -79,20 +79,20 @@ int reverse(int N, int n)    //calculating revers number
   return p;
 }
 
-void ordina(complex<double>* f1, int N) //using the reverse order in the array
+void ordina(double complex* f1, int N) //using the reverse order in the array
 {
-  complex<double> f2[MAX];
+  double complex f2[MAX];
   for(int i = 0; i < N; i++)
     f2[i] = f1[reverse(N, i)];
   for(int j = 0; j < N; j++)
     f1[j] = f2[j];
 }
 
-void transform(complex<double>* f, int N) //
+void transform(double complex* f, int N) //
 {
   ordina(f, N);    //first: reverse order
-  complex<double> *W;
-  W = (complex<double> *)malloc(N / 2 * sizeof(complex<double>));
+  double complex *W;
+  W = (double complex *)malloc(N / 2 * sizeof(double complex));
   W[1] = polar(1., -2. * M_PI / N);
   W[0] = 1;
   for(int i = 2; i < N / 2; i++)
@@ -102,8 +102,8 @@ void transform(complex<double>* f, int N) //
   for(int j = 0; j < log2(N); j++) {
     for(int i = 0; i < N; i++) {
       if(!(i & n)) {
-        complex<double> temp = f[i];
-        complex<double> Temp = W[(i * a) % (n * a)] * f[i + n];
+        double complex temp = f[i];
+double complex Temp = W[(i * a) % (n * a)] * f[i + n];
         f[i] = temp + Temp;
         f[i + n] = temp - Temp;
       }
@@ -114,7 +114,7 @@ void transform(complex<double>* f, int N) //
   free(W);
 }
 
-void FFT(complex<double>* f, int N, double d)
+void FFT(double complex* f, int N, double d)
 {
   transform(f, N);
   for(int i = 0; i < N; i++)
@@ -123,7 +123,7 @@ void FFT(complex<double>* f, int N, double d)
 
 int main()
 {
-complex<double> vec[MAX];
+double complex vec[MAX];
 
 vec[0] = 1;
 vec[1] = 0;
