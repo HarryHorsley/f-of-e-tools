@@ -43,7 +43,7 @@ int main(void)
 		
     	PI = atan2(1, 1) * 4;
 	cplx buf[] = {1, 1, 0, 0};
-	_fft(buf, out, 1, 1);
+	_fft(buf, buf, 1, 1);
 	//fft(buf, 4);
     
 		*debugLEDs = 0x00;		
