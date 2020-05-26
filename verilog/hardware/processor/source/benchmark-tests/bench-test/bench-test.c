@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <math.h>
 #include <complex.h>
 
 typedef double complex cplx;
@@ -41,14 +40,11 @@ int main(void)
 		
 	*debugLEDs = 0xFF;
 		
-	
-		
-    	double PI = atan2(1, 1) * 4;
 	cplx buf[] = {1, 1, 0, 0};
 	//_fft(buf, buf, 1, 1);
 	//fft(buf, 4);
 	for (int i = 0; i < 8; i += 2) {
-			cplx t = cexp(-I * PI * i / 8) * 11;
+			cplx t = 2.18^(-I * PI * i / 8) * 11;
 			buf[i / 2]     = 11 + t;
 			buf[(i + 8)/2] = 11 - t;
 		}
