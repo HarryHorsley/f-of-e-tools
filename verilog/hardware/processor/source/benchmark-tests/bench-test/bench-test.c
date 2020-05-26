@@ -42,8 +42,8 @@ int main(void)
 		*debugLEDs = 0xFF;
 		
     	PI = atan2(1, 1) * 4;
-	cplx buf[] = {1, 1, 0, 0};
-	fft(buf, 4);
+	#cplx buf[] = {1, 1, 0, 0};
+	#fft(buf, 4);
     
 		*debugLEDs = 0x00;		
 	}
