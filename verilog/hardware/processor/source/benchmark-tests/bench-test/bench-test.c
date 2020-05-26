@@ -39,7 +39,8 @@ int main(void)
 	while (1) {
 		
 	*debugLEDs = 0xFF;
-		
+	
+	int PI = 3;
 	cplx buf[] = {1, 1, 0, 0};
 	//_fft(buf, buf, 1, 1);
 	//fft(buf, 4);
