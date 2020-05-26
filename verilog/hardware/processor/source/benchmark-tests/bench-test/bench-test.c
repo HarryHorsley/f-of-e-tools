@@ -45,7 +45,7 @@ int main(void)
 	//_fft(buf, buf, 1, 1);
 	//fft(buf, 4);
 	for (int i = 0; i < 8; i += 2) {
-			float t = 2**(-I * PI * i / 8) * 11;
+			float t = 2**(-PI * i / 8) * 11;
 			buf[i / 2]     = 11 + t;
 			buf[(i + 8)/2] = 11 - t;
 		}
