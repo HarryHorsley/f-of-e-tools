@@ -17,23 +17,13 @@ void vector_init(vector *v)
 	v->count = 0;
 }
 
-void vector_add(vector *v, void *e)
+void vector_add(vector *v, int *e)
 {
 	if (v->size == 0) {
 		v->size = 10;
 		v->data = malloc(sizeof(void*) * v->size);
 		memset(v->data, '\0', sizeof(void) * v->size);
 	}
-
-	// condition to increase v->data:
-	// last slot exhausted
-	if (v->size == v->count) {
-		v->size *= 2;
-		v->data = realloc(v->data, sizeof(void*) * v->size);
-	}
-
-	v->data[v->count] = e;
-	v->count++;
 }
 
 // double PI;
