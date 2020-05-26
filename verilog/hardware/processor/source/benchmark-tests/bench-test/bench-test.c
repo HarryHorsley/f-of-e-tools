@@ -17,7 +17,7 @@ void vector_init(vector *v)
 	v->count = 0;
 }
 
-void vector_add(vector *v, int *e)
+void vector_add(vector *v, void *e)
 {
 	if (v->size == 0) {
 		v->size = 10;
@@ -68,8 +68,7 @@ int main(void)
 	
 	vector v;
 	vector_init(&v);
-
-	vector_add(&v, 0123);
+	vector_add(&v, "h");
 		
 //     	PI = atan2(1, 1) * 4;
 // 	cplx buf[] = {1, 1, 0, 0};
