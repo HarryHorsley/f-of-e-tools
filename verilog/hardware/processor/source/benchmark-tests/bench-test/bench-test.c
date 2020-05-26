@@ -44,7 +44,7 @@ int main(void)
 	
 		
     	double PI = atan2(1, 1) * 4;
-	//cplx buf[] = {1, 1, 0, 0};
+	cplx buf[] = {1, 1, 0, 0};
 	//_fft(buf, buf, 1, 1);
 	//fft(buf, 4);
 	for (int i = 0; i < 8; i += 2) {
