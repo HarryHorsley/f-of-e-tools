@@ -103,5 +103,18 @@ module top (led);
 			.clk_stall(data_clk_stall)
 		);
 
+
+SB_SPRAM256KA data_chip_1(
+ .DATAIN(data_WrData),
+ .ADDRESS(data_addr),
+ .MASKWREN(),
+ .WREN(WREN),
+ .CHIPSELECT(CHIPSELECT),
+ .CLOCK(CLOCK),
+ .STANDBY(STANDBY),
+ .SLEEP(SLEEP),
+ .POWEROFF(POWEROFF),
+ .DATAOUT(DATAOUT_A)	
+)
 	assign clk_proc = (data_clk_stall) ? 1'b1 : clk;
 endmodule
