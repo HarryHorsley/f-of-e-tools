@@ -13,8 +13,8 @@ module cascaded_mem(
 
 SB_SPRAM256KA cascade0(
  .DATAIN(data_in [31:16]),
- .ADDRESS(addr),
- .MASKWREN(mask_wren),
+	.ADDRESS(addr [13:0]),
+	.MASKWREN(mask_wren [7:0]),
  .WREN(wren),
  .CHIPSELECT(chip_sel),
  .CLOCK(clk),
@@ -27,7 +27,7 @@ SB_SPRAM256KA cascade0(
 SB_SPRAM256KA cascade1(
  .DATAIN(data_in [15:0]),
  .ADDRESS(addr),
- .MASKWREN(mask_wren),
+	.MASKWREN(mask_wren [7:0]),
  .WREN(wren),
  .CHIPSELECT(chip_sel),
  .CLOCK(clk),
