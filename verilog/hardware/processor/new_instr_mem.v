@@ -26,14 +26,14 @@ wire mask_wren_choice_0;
 	  .output1(data_choice_1) //also a wire
   )
 	
-	demux1to2 demux1to2_wren(
+demux1to2 demux1to2_wren(
 		.input0(mask_wren [7:0]),
 		.select(select),
 		.output0(mask_wren_choice_0),
 		.output1(mask_wren_choice_1)
 	)
 	
-	mux2to1 mux2to1_dataout(
+mux2to1 mux2to1_dataout(
 		.input0(data_out_0),
 		.input1(data_out_1),
 		.select(select),
