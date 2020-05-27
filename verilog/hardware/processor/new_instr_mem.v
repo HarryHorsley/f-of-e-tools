@@ -16,7 +16,7 @@ module new_instr_mem(
   wire data_out_0;
   wire data_out_1;
   wire select = addr [14];
-wire mask_wren_choice_0;
+	wire mask_wren_choice_0;
 	wire mask_wren_choice_1;
   
   demux1to2 demux1to2_datain(
@@ -35,7 +35,7 @@ demux1to2 demux1to2_wren(
 	
 
   
-  cascaded_mem cascade0(
+  data_cascaded_mem cascade0(
 	  .addr(addr [13:0]),
 	  .data_in(data_choice_0 [31:0]),
 	  .chip_sel(chip_sel),
@@ -48,7 +48,7 @@ demux1to2 demux1to2_wren(
 	  .data_out(data_out_0 [31:0])
   )
   
- cascaded_mem cascade1(
+ data_cascaded_mem cascade1(
 	 .addr(addr [13:0]),
 	 .data_in(data_choice_1 [31:0]),
 	 .chip_sel(chip_sel),
