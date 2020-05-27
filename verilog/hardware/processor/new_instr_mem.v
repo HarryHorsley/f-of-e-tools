@@ -33,12 +33,7 @@ demux1to2 demux1to2_wren(
 		.output1(mask_wren_choice_1)
 	)
 	
-mux2to1 mux2to1_dataout(
-		.input0(data_out_0),
-		.input1(data_out_1),
-		.select(select),
-		.out(data_out [31:0])
-	)
+
   
   cascaded_mem cascade0(
 	  .addr(addr [13:0]),
@@ -65,3 +60,10 @@ mux2to1 mux2to1_dataout(
 	 .poweroff(poweroff),
    	 .data_out(data_out_1 [31:0])
   )
+	
+mux2to1 mux2to1_dataout(
+		.input0(data_out_0),
+		.input1(data_out_1),
+		.select(select),
+		.out(data_out [31:0])
+	)
