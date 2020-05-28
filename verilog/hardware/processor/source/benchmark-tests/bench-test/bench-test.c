@@ -34,7 +34,7 @@ int main(void)
     h_start = MIN(i,lenH-1);
     for(j=x_start; j<x_end; j++)
     {
-      y[i] += h[h_start--]*x[j];
+      y += h[h_start--]*x[j];
     }
     
 	*debugLEDs = 0x00;
