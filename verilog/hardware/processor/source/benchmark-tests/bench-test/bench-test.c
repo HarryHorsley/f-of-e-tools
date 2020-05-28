@@ -42,7 +42,7 @@ int main(void)
 	int h[] = { 1.0, 4.0, 1.0, 1.0, 24.0 };
   	int x[] = { 1.0, 1.0, 1.0, 3.0, 1.0 };
   	int lenY;
-  	int *y = convolve(h,x,5,5,&lenY);
+  	int y = convolve(h,x,5,5);
     
 	*debugLEDs = 0x00;
 	
