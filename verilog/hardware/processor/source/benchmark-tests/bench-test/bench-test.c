@@ -1,29 +1,29 @@
+#include <stdlib.h>
 #include <stdio.h>
-#include <complex.h>
 
-typedef double complex cplx;
- 
-// void _fft(cplx buf[], cplx out[], int n, int step)
-// {
-// 	if (step < n) {
-// 		_fft(out, buf, n, step * 2);
-// 		_fft(out + step, buf + step, n, step * 2);
- 
-// 		for (int i = 0; i < n; i += 2 * step) {
-// 			cplx t = cexp(-I * PI * i / n) * out[i + step];
-// 			buf[i / 2]     = out[i] + t;
-// 			buf[(i + n)/2] = out[i] - t;
-// 		}
-// 	}
-// }
- 
-// void fft(cplx buf[], int n)
-// {
-// 	cplx out[n];
-// 	for (int i = 0; i < n; i++) out[i] = buf[i];
- 
-// 	_fft(buf, out, n, 1);
-// }
+#define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
+#define MAX(X, Y) (((X) < (Y)) ? (Y) : (X))
+
+float* convolve(float h[], float x[], int lenH, int lenX, int* lenY)
+{
+  int nconv = lenH+lenX-1;
+  (*lenY) = nconv;
+  int i,j,h_start,x_start,x_end;
+
+  float *y = (float*) calloc(nconv, sizeof(float));
+
+  for (i=0; i<nconv; i++)
+  {
+    x_start = MAX(0,i-lenH+1);
+    x_end   = MIN(i+1,lenX);
+    h_start = MIN(i,lenH-1);
+    for(j=x_start; j<x_end; j++)
+    {
+      y[i] += h[h_start--]*x[j];
+    }
+  }
+  return y;
+}
 
 int main(void)
 {
@@ -40,15 +40,10 @@ int main(void)
 		
 	*debugLEDs = 0xFF;
 	
-	int PI = 3;
-	cplx buf[] = {1, 1, 0, 0};
-	//_fft(buf, buf, 1, 1);
-	//fft(buf, 4);
-	for (int i = 0; i < 8; i += 2) {
-			float t = 2**(-PI * i / 8) * 11;
-			buf[i / 2]     = 11 + t;
-			buf[(i + 8)/2] = 11 - t;
-		}
+	float h[] = { 1.0, 4.0, 1.0, 1.0, 24.0 };
+  	float x[] = { 1.0, 1.0, 1.0, 3.0, 1.0 };
+  	int lenY;
+  	float *y = convolve(h,x,5,5,&lenY);
     
 	*debugLEDs = 0x00;
 	
