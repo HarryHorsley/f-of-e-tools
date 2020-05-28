@@ -36,6 +36,7 @@ int main(void)
     {
       y += h[h_start--]*x[j];
     }
+	}
     
 	*debugLEDs = 0x00;
 	
