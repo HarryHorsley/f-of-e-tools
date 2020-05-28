@@ -63,7 +63,7 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 
     reg[31:0] A_fwd;
     reg[31:0] B_fwd;
-    reg c_in;
+    reg sub;
 
     always @(ALUctl, A, B) begin
         case (ALUctl[3:0])
@@ -71,38 +71,32 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
             begin
                 A_fwd = ~A;
                 B_fwd = ~B;
-                c_in = 1'b0;
-            end
-            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SUB:
-            begin
-                A_fwd = A;
-                B_fwd = ~B;
-                c_in = 1'b1;
-            end
-            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT:
-            begin
-                A_fwd = A;
-                B_fwd = ~B;
-                c_in = 1'b1;
             end
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRW:
             begin
                 A_fwd = A;
-                B_fwd = 32'b0;
-                c_in = 1'b0;
+                B_fwd = 32'hFFFFFFFF; // Result = A = A & 1
             end
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRS:
             begin
                 A_fwd = ~A;
                 B_fwd = ~B;
-                c_in = 1'b0;
+            end
+            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRC:
+            begin
+                A_fwd = ~A;
+                B_fwd = B;
             end
             default:
             begin
                 A_fwd = A;
                 B_fwd = B;
-                c_in = 1'b0;
             end
+        endcase
+        case (ALUctl[3:0])
+            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SUB: sub=1'b1;
+            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT: sub=1'b1;
+            default: sub=1'b0;
         endcase
     end
 
@@ -111,7 +105,22 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
     reg[31:0] shift_out;
     wire[31:0] xor_out;
 
-    assign add_out = A_fwd + B_fwd + c_in;
+    // assign add_out = A_fwd + B_fwd + c_in
+    // Replace the above with an instantiation of the iCE40 DSP with
+    // appropriate settings for 32x32 Adder / Subtractor
+
+    SB_MAC16 sb_mac16_adder(
+        .CLK(1'b0), // Clock and clock enable
+        .CE(1'b0),  // Is it fine to disable the clock if using the adder?
+        .A(A_fwd[15:0]),
+        .B(B_fwd[15:0]),
+        .C(A_fwd[31:16]),
+        .D(B_fwd[31:16]),
+        .ADDSUBTOP(sub),
+        .ADDSUBBOT(sub),
+        .O(add_out)
+    );
+
     assign and_out = A_fwd & B_fwd;
     assign xor_out = A^B;
 
@@ -191,7 +200,7 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 			/*
 			 *	Should never happen.
 			 */
-			default:					op_out = 0;
+			default: op_out = 0;
 		endcase
 	end
 
@@ -212,9 +221,11 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 
     assign Branch_Zero_Check = (ALUOut==0);
 
+    // Otherwise, ALUOut = A - B.
+    // Branch_Result = 1 if A < B, so need ALUOut < 0, so ALUOut[31] == 1
     mux2to1 branch_result_mux(
         .input0(Branch_Zero_Check),
-        .input1(ALUOut),
+        .input1(ALUOut[31]),
         .select(ALUctl[6]),
         .out(Branch_Result)
     );
