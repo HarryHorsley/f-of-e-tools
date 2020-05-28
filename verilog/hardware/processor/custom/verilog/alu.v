@@ -156,12 +156,15 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 		endcase
 	end
 
-	always @(ALUctl, ALUOut, A, B) begin
-		case (ALUctl[6:5])
-            00: Branch_Result = (ALUOut == 0);
-            10: Branch_Result = ($signed(A) < $signed(B));
-            11: Branch_Result = ($unsigned(A) < $unsigned(B));
-            default: Branch_Result = 1'b0;
-		endcase
-	end
+    always @(ALUctl, ALUOut, A, B) begin
+        if (ALUctl[6])
+        begin
+            if (ALUctl[5])
+                Branch_Result = ($unsigned(A) < $unsigned(B));
+            else
+                Branch_Result = ($signed(A) < $signed(B));
+        end
+        else
+            Branch_Result = (ALUOut==0);
+    end
 endmodule
