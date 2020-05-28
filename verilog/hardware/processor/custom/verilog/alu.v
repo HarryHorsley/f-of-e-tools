@@ -59,7 +59,19 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 	input [31:0]		A;
 	input [31:0]		B;
 	output reg [31:0]	ALUOut;
-	output reg		Branch_Enable;
+	output		        Branch_Enable;
+
+    reg Branch_Result;
+    wire Branch_Result_Inv;
+
+    assign Branch_Result_Inv = (~Branch_Result);
+
+    mux2to1 branch_inv_mux(
+        .input0(Branch_Result),
+        .input1(Branch_Result_Inv),
+        .select(ALUctl[4]),
+        .out(Branch_Enable)
+    );
 
 	/*
 	 *	This uses Yosys's support for nonzero initial values:
@@ -72,7 +84,7 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 	 */
 	initial begin
 		ALUOut = 32'b0;
-		Branch_Enable = 1'b0;
+		Branch_Result = 1'b0;
 	end
 
 	always @(ALUctl, A, B) begin
@@ -145,15 +157,11 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 	end
 
 	always @(ALUctl, ALUOut, A, B) begin
-		case (ALUctl[6:4])
-			`kSAIL_MICROARCHITECTURE_ALUCTL_6to4_BEQ:	Branch_Enable = (ALUOut == 0);
-			`kSAIL_MICROARCHITECTURE_ALUCTL_6to4_BNE:	Branch_Enable = !(ALUOut == 0);
-			`kSAIL_MICROARCHITECTURE_ALUCTL_6to4_BLT:	Branch_Enable = ($signed(A) < $signed(B));
-			`kSAIL_MICROARCHITECTURE_ALUCTL_6to4_BGE:	Branch_Enable = ($signed(A) >= $signed(B));
-			`kSAIL_MICROARCHITECTURE_ALUCTL_6to4_BLTU:	Branch_Enable = ($unsigned(A) < $unsigned(B));
-			`kSAIL_MICROARCHITECTURE_ALUCTL_6to4_BGEU:	Branch_Enable = ($unsigned(A) >= $unsigned(B));
-
-			default:					Branch_Enable = 1'b0;
+		case (ALUctl[6:5])
+            00: Branch_Result = (ALUOut == 0);
+            10: Branch_Result = ($signed(A) < $signed(B));
+            11: Branch_Result = ($unsigned(A) < $unsigned(B));
+            default: Branch_Result = 1'b0;
 		endcase
 	end
 endmodule
