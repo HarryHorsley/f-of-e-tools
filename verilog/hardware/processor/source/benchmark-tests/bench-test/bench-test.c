@@ -23,7 +23,7 @@ int main(void)
   	int x[] = { 1.0, 1.0, 1.0, 3.0, 1.0,3,87,1,6};
 	int lenH = 9;
   	int nconv = lenH+lenH-1;
-  	int i,j,h_start,x_start,x_end,y;
+  	int i,j,h_start,x_start,x_end,y,m;
 	for (m=0; m<10000; m++){	//This is to make enough iterations for a period of time between LED flashes
   	for (i=0; i<nconv; i++)
   	{
