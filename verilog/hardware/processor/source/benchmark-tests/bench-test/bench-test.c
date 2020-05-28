@@ -4,7 +4,7 @@
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 #define MAX(X, Y) (((X) < (Y)) ? (Y) : (X))
 
-float* convolve(int h[], int x[], int lenH, int lenX)
+int convolve(int h[], int x[], int lenH, int lenX)
 {
   int nconv = lenH+lenX-1;
   int i,j,h_start,x_start,x_end;
@@ -41,7 +41,6 @@ int main(void)
 	
 	int h[] = { 1.0, 4.0, 1.0, 1.0, 24.0 };
   	int x[] = { 1.0, 1.0, 1.0, 3.0, 1.0 };
-  	int lenY;
   	int y = convolve(h,x,5,5);
     
 	*debugLEDs = 0x00;
