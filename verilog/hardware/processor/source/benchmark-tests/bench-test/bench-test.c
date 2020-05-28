@@ -1,6 +1,3 @@
-#include <stdlib.h>
-#include <stdio.h>
-
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 #define MAX(X, Y) (((X) < (Y)) ? (Y) : (X))
 
