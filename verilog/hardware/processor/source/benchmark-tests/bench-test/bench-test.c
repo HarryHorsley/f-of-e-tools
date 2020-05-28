@@ -1,13 +1,15 @@
+#include <stdlib.h>
+#include <stdio.h>
+
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 #define MAX(X, Y) (((X) < (Y)) ? (Y) : (X))
 
-float* convolve(int h[], int x[], int lenH, int lenX, int* lenY)
+float* convolve(int h[], int x[], int lenH, int lenX)
 {
   int nconv = lenH+lenX-1;
-  (*lenY) = nconv;
   int i,j,h_start,x_start,x_end;
 
-  int *y = (int*) calloc(nconv, sizeof(int));
+  int y;
 
   for (i=0; i<nconv; i++)
   {
