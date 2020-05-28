@@ -4,26 +4,6 @@
 #define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
 #define MAX(X, Y) (((X) < (Y)) ? (Y) : (X))
 
-int convolve(int h[], int x[], int lenH, int lenX)
-{
-  int nconv = lenH+lenX-1;
-  int i,j,h_start,x_start,x_end;
-
-  int y;
-
-  for (i=0; i<nconv; i++)
-  {
-    x_start = MAX(0,i-lenH+1);
-    x_end   = MIN(i+1,lenX);
-    h_start = MIN(i,lenH-1);
-    for(j=x_start; j<x_end; j++)
-    {
-      y[i] += h[h_start--]*x[j];
-    }
-  }
-  return y;
-}
-
 int main(void)
 {
 	/*
@@ -41,7 +21,21 @@ int main(void)
 	
 	int h[] = { 1.0, 4.0, 1.0, 1.0, 24.0 };
   	int x[] = { 1.0, 1.0, 1.0, 3.0, 1.0 };
-  	int y = convolve(h,x,5,5);
+	int lenH = 5;
+  	int nconv = lenH+lenH-1;
+  	int i,j,h_start,x_start,x_end;
+
+  	int y;
+
+  	for (i=0; i<nconv; i++)
+  	{
+    x_start = MAX(0,i-lenH+1);
+    x_end   = MIN(i+1,lenH);
+    h_start = MIN(i,lenH-1);
+    for(j=x_start; j<x_end; j++)
+    {
+      y[i] += h[h_start--]*x[j];
+    }
     
 	*debugLEDs = 0x00;
 	
