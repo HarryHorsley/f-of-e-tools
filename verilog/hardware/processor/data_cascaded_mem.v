@@ -9,7 +9,7 @@ module data_cascaded_mem(
 	input sleep,
 	input poweroff,
 	output [31:0] data_out
-)
+);
 
 SB_SPRAM256KA cascade0(
  .DATAIN(data_in [31:16]),

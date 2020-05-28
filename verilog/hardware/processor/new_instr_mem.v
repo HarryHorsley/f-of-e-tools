@@ -9,7 +9,7 @@ module new_instr_mem(
 	input sleep,
 	input poweroff,
 	output [31:0] data_out
-)
+);
 
   wire data_choice_0;
   wire data_choice_1;
