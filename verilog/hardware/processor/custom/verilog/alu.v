@@ -156,14 +156,28 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 		endcase
 	end
 
+    /*
+    *   Branch condition depends on ALUctl[6:4]
+    *   000: A==B
+    *   001: A!=B
+    *   100: A<B
+    *   101: A>=B
+    *   110: A<B (unsigned)
+    *   111: A>=B (unsigned)
+    *   In each case, the bit ALUctl[4] inverts the condition
+    *   Therefore, can simplify to
+    *   00: A==B or A!=B
+    *   10: A<B or A>=B
+    *   11; A<B or A>=B (unsigned)
+    *   These can make use of the ALUOut result.
+    *   BEQ, BNE: ALUOut = A-B, Branch_Result = ALUOut==0
+    *   Others: ALUOut = (A < B), using the SLT operation, which works for
+    *   signed or unsigned numbers, then just set Branch_Result = ALUOut
+    *   (The operations are controlled using alu_control.v
+    */
     always @(ALUctl, ALUOut, A, B) begin
         if (ALUctl[6])
-        begin
-            if (ALUctl[5])
-                Branch_Result = ($unsigned(A) < $unsigned(B));
-            else
-                Branch_Result = ($signed(A) < $signed(B));
-        end
+            Branch_Result = ALUOut;
         else
             Branch_Result = (ALUOut==0);
     end
