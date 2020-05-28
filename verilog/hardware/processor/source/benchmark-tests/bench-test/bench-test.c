@@ -23,19 +23,19 @@ int main(void)
   	int x[] = { 1.0, 1.0, 1.0, 3.0, 1.0,3,87,1,6};
 	int lenH = 9;
   	int nconv = lenH+lenH-1;
-  	int i,j,h_start,x_start,x_end;
-
-  	int y;
-
+  	int i,j,h_start,x_start,x_end,y;
+	for (m=0; m<10000; m++){	//This is to make enough iterations for a period of time between LED flashes
   	for (i=0; i<nconv; i++)
   	{
-    x_start = MAX(0,i-lenH+1);
-    x_end   = MIN(i+1,lenH);
-    h_start = MIN(i,lenH-1);
-    for(j=x_start; j<x_end; j++)
-    {
-      y += h[h_start--]*x[j];
-    }
+    	x_start = MAX(0,i-lenH+1);
+    	x_end   = MIN(i+1,lenH);
+    	h_start = MIN(i,lenH-1);
+    	for(j=x_start; j<x_end; j++)
+    	{
+      		y += h[h_start--]*x[j];
+   	 }
+	}
+		y = 0;
 	}
     
 	*debugLEDs = 0x00;
