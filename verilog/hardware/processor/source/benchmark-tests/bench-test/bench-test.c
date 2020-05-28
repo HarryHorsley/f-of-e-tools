@@ -19,9 +19,9 @@ int main(void)
 		
 	*debugLEDs = 0xFF;
 	
-	int h[] = { 1.0, 4.0, 1.0, 1.0, 24.0 };
-  	int x[] = { 1.0, 1.0, 1.0, 3.0, 1.0 };
-	int lenH = 5;
+	int h[] = { 1.0, 4.0, 1.0, 1.0, 24.0,4,9,6,78};
+  	int x[] = { 1.0, 1.0, 1.0, 3.0, 1.0,3,87,1,6};
+	int lenH = 9;
   	int nconv = lenH+lenH-1;
   	int i,j,h_start,x_start,x_end;
 
