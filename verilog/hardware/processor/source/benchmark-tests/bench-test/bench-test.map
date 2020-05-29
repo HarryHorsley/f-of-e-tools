@@ -87,7 +87,7 @@ LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
 .iplt
  *(.iplt)
 
-.text           0x0000000008004000      0xc3c
+.text           0x0000000008004000      0xc60
  *(.text.unlikely .text.*_unlikely .text.unlikely.*)
  *(.text.exit .text.exit.*)
  *(.text.startup .text.startup.*)
@@ -96,48 +96,48 @@ LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
  .text          0x0000000008004000       0x1c init-sf.o
                 0x0000000008004000                _start
                 0x0000000008004010                __errno
- .text          0x000000000800401c      0x228 bench-test.o
+ .text          0x000000000800401c      0x24c bench-test.o
                 0x000000000800401c                main
- .text          0x0000000008004244       0x34 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-exit.o)
-                0x0000000008004244                exit
- .text          0x0000000008004278        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
- .text          0x0000000008004278      0x11c /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-__call_atexit.o)
-                0x0000000008004278                __call_exitprocs
- .text          0x0000000008004394       0x24 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgcc.a(muldi3.o)
-                0x0000000008004394                __mulsi3
- .text          0x00000000080043b8      0x884 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a(syscalls.o)
-                0x000000000800445c                __syscall_error
-                0x000000000800448c                _open
-                0x00000000080044d4                _openat
-                0x0000000008004518                _lseek
-                0x0000000008004560                _read
-                0x00000000080045a8                _write
-                0x00000000080045f0                _fstat
-                0x0000000008004658                _stat
-                0x00000000080046c0                _lstat
-                0x0000000008004728                _fstatat
-                0x0000000008004788                _access
-                0x00000000080047d4                _faccessat
-                0x0000000008004818                _close
-                0x0000000008004868                _link
-                0x00000000080048b4                _unlink
-                0x0000000008004904                _execve
-                0x0000000008004928                _fork
-                0x000000000800494c                _getpid
-                0x0000000008004954                _kill
-                0x0000000008004978                _wait
-                0x000000000800499c                _isatty
-                0x00000000080049cc                _gettimeofday
-                0x0000000008004a1c                _times
-                0x0000000008004ac0                _ftime
-                0x0000000008004adc                _utime
-                0x0000000008004ae4                _chown
-                0x0000000008004aec                _chmod
-                0x0000000008004af4                _chdir
-                0x0000000008004afc                _getcwd
-                0x0000000008004b04                _sysconf
-                0x0000000008004b20                _sbrk
-                0x0000000008004c00                _exit
+ .text          0x0000000008004268       0x34 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-exit.o)
+                0x0000000008004268                exit
+ .text          0x000000000800429c        0x0 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-impure.o)
+ .text          0x000000000800429c      0x11c /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libc.a(lib_a-__call_atexit.o)
+                0x000000000800429c                __call_exitprocs
+ .text          0x00000000080043b8       0x24 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgcc.a(muldi3.o)
+                0x00000000080043b8                __mulsi3
+ .text          0x00000000080043dc      0x884 /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a(syscalls.o)
+                0x0000000008004480                __syscall_error
+                0x00000000080044b0                _open
+                0x00000000080044f8                _openat
+                0x000000000800453c                _lseek
+                0x0000000008004584                _read
+                0x00000000080045cc                _write
+                0x0000000008004614                _fstat
+                0x000000000800467c                _stat
+                0x00000000080046e4                _lstat
+                0x000000000800474c                _fstatat
+                0x00000000080047ac                _access
+                0x00000000080047f8                _faccessat
+                0x000000000800483c                _close
+                0x000000000800488c                _link
+                0x00000000080048d8                _unlink
+                0x0000000008004928                _execve
+                0x000000000800494c                _fork
+                0x0000000008004970                _getpid
+                0x0000000008004978                _kill
+                0x000000000800499c                _wait
+                0x00000000080049c0                _isatty
+                0x00000000080049f0                _gettimeofday
+                0x0000000008004a40                _times
+                0x0000000008004ae4                _ftime
+                0x0000000008004b00                _utime
+                0x0000000008004b08                _chown
+                0x0000000008004b10                _chmod
+                0x0000000008004b18                _chdir
+                0x0000000008004b20                _getcwd
+                0x0000000008004b28                _sysconf
+                0x0000000008004b44                _sbrk
+                0x0000000008004c24                _exit
  *(.gnu.warning)
 
 .fini
@@ -146,9 +146,9 @@ LOAD /data/f-of-e-tools/tools/sunflower/tools/tools-lib/riscv/libgloss.a
                 [!provide]                        PROVIDE (_etext, .)
                 [!provide]                        PROVIDE (etext, .)
 
-.rodata         0x0000000008004c3c       0x48
+.rodata         0x0000000008004c60       0x48
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x0000000008004c3c       0x48 bench-test.o
+ .rodata        0x0000000008004c60       0x48 bench-test.o
 
 .rodata1
  *(.rodata1)
