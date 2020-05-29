@@ -52,21 +52,38 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
     reg[31:0] shift_out;
     wire[31:0] xor_out;
 
-    // assign add_out = A_fwd + B_fwd + c_in
-    // Replace the above with an instantiation of the iCE40 DSP with
-    // appropriate settings for 32x32 Adder / Subtractor
-
+    // Implement addition/subtraction with an SB_MAC16 instance
+    // Input 1 (A_fwd) = {A[15:0], B[15:0]}
+    // Input 2 (B_fwd) = {C[15:0], D[15:0]}
     SB_MAC16 sb_mac16_adder(
-        .CLK(1'b0), // Clock and clock enable
-        .CE(1'b0),  // Is it fine to disable the clock if using the adder?
-        .A(A_fwd[15:0]),
-        .B(B_fwd[15:0]),
-        .C(A_fwd[31:16]),
-        .D(B_fwd[31:16]),
-        .ADDSUBTOP(sub),
+        .CLK(1'b0),
+        .CE(1'b0),
+        .A(A_fwd[31:16]),
+        .B(A_fwd[15:0]),
+        .C(B_fwd[31:16]),
+        .D(B_fwd[15:0]),
+        .ADDSUBTOP(sub), // Controls add/sub
         .ADDSUBBOT(sub),
+        .CI(sub),
+        .OLOADBOT(1'b0), // Controls output from bottom adder
+        .OLOADTOP(1'b0), // Controls output from top adder
         .O(add_out)
     );
+    defparam sb_mac16_adder.C_REG = 1'b0; // Not registered, meaning
+    defparam sb_mac16_adder.A_REG = 1'b0; // not loaded into a register.
+    defparam sb_mac16_adder.B_REG = 1'b0;
+    defparam sb_mac16_adder.D_REG = 1'b0;
+
+    defparam sb_mac16_adder.TOPOUTPUT_SELECT = 2'b00; // Top output add/sub, not registered
+    defparam sb_mac16_adder.BOTOUTPUT_SELECT = 2'b00; // Bot output add/sub, not registered
+
+    defparam sb_mac16_adder.TOPADDSUB_LOWERINPUT = 2'b00; // Pass input A to top adder
+    defparam sb_mac16_adder.TOPADDSUB_UPPERINPUT = 1'b1; // Pass input C to top adder
+    defparam sb_mac16_adder.BOTADDSUB_LOWERINPUT = 2'b00; // Pass input B to bot adder
+    defparam sb_mac16_adder.BOTADDSUB_UPPERINPUT = 1'b1; // Pass input D to bot adder
+
+    defparam sb_mac16_adder.TOPADDSUB_CARRYSELECT = 2'b11; // Pass CO from lower to CI of upper
+    defparam sb_mac16_adder.BOTADDSUB_CARRYSELECT = 2'b11; // Pass CI(sub) to lower CI
 
     assign and_out = A_fwd & B_fwd;
     assign xor_out = A^B;
@@ -149,7 +166,7 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
     // For BLT, BGE, BLTU, BGEU, Branch_Result = ALUOut[31], which assuming
     // ALUOut is signed, will be 1 if it is negative.
     mux2to1 branch_result_mux(
-        .input0(ALUOut_Zero_Check[0]),
+        .input0(ALUOut_Zero_Check),
         .input1(ALUOut[31]),
         .select(ALUctl[6]),
         .out(Branch_Result)
