@@ -40,6 +40,8 @@ int main(void)
     
 	*debugLEDs = 0x00;
 	
+	for (int k = 0; k < 400000; j++);	
+		
 	}
 	
 }
