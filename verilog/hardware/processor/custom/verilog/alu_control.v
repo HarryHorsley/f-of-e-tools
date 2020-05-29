@@ -110,23 +110,18 @@ module ALUControl(FuncCode, ALUCtl, Opcode);
 			 */
 			`kRV32I_INSTRUCTION_OPCODE_BRANCH:
 				case (FuncCode[2:0])
-                    // Edited.
-                    // BEQ and BNE use the SUB operation:
-                    //      ALUCtl[3:0] = 0110
-                    // BLT, BGE, BLTU, BGEU use the SLT operation:
-                    //      ALUCtl[3:0] = 0111
 					3'b000:
 						ALUCtl = 7'b0010110; //BEQ conditions
 					3'b001:
 						ALUCtl = 7'b0100110; //BNE conditions
 					3'b100:
-						ALUCtl = 7'b0110111; //BLT conditions
+						ALUCtl = 7'b0110110; //BLT conditions
 					3'b101:
-						ALUCtl = 7'b1000111; //BGE conditions
+						ALUCtl = 7'b1000110; //BGE conditions
 					3'b110:
-						ALUCtl = 7'b1010111; //BLTU conditions
+						ALUCtl = 7'b1010110; //BLTU conditions
 					3'b111:
-						ALUCtl = 7'b1100111; //BGEU conditions
+						ALUCtl = 7'b1100110; //BGEU conditions
 					default:
 						ALUCtl = `kSAIL_MICROARCHITECTURE_ALUCTL_6to0_ILLEGAL;
 				endcase

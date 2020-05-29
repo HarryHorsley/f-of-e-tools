@@ -1,59 +1,6 @@
-/*
-	Authored 2018-2019, Ryan Voo.
-
-	All rights reserved.
-	Redistribution and use in source and binary forms, with or without
-	modification, are permitted provided that the following conditions
-	are met:
-
-	*	Redistributions of source code must retain the above
-		copyright notice, this list of conditions and the following
-		disclaimer.
-
-	*	Redistributions in binary form must reproduce the above
-		copyright notice, this list of conditions and the following
-		disclaimer in the documentation and/or other materials
-		provided with the distribution.
-
-	*	Neither the name of the author nor the names of its
-		contributors may be used to endorse or promote products
-		derived from this software without specific prior written
-		permission.
-
-	THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
-	"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
-	LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
-	FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
-	COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
-	INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
-	BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-	LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-	CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
-	LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
-	ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-	POSSIBILITY OF SUCH DAMAGE.
-*/
-
-
-
 `include "../include/rv32i-defines.v"
 `include "../include/sail-core-defines.v"
 
-
-
-/*
- *	Description:
- *
- *		This module implements the ALU for the RV32I.
- */
-
-
-
-/*
- *	Not all instructions are fed to the ALU. As a result, the ALUctl
- *	field is only unique across the instructions that are actually
- *	fed to the ALU.
- */
 module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 	input [6:0]		ALUctl;
 	input [31:0]		A;
@@ -137,69 +84,43 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 
 	always @(ALUctl, add_out, and_out, shift_out, xor_out) begin
 		case (ALUctl[3:0])
-			/*
-			 *	AND (the fields also match ANDI and LUI)
-			 */
+            // AND, 0000, out = A & B
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_AND: op_out = and_out;
 
-			/*
-			 *	OR (the fields also match ORI)
-			 */
+            // OR, 0001, out = A | B
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_OR: op_out = and_out;
 
-			/*
-			 *	ADD (the fields also match AUIPC, all loads, all stores, and ADDI)
-			 */
+            // ADD, 0010, out = A + B
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_ADD: op_out = add_out;
 
-			/*
-			 *	SUBTRACT (the fields also matches all branches)
-			 */
+            // SUB, 0110, out = A - B
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SUB: op_out = add_out;
 
-			/*
-			 *	SLT (the fields also matches all the other SLT variants)
-			 */
+            // SLT, 0111, out = (A < B ? 1 : 0)
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT: op_out = add_out;
 
-			/*
-			 *	SRL (the fields also matches the other SRL variants)
-			 */
+            // SRL, 0011, out = A>>B[4:0]
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SRL: op_out = shift_out;
 
-			/*
-			 *	SRA (the fields also matches the other SRA variants)
-			 */
+            // SRA, 0100, out = A>>>B[4:0]
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SRA: op_out = shift_out;
 
-			/*
-			 *	SLL (the fields also match the other SLL variants)
-			 */
+            // SLL, 0101, out = A<<B[4:0]
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLL: op_out = shift_out;
 
-			/*
-			 *	XOR (the fields also match other XOR variants)
-			 */
+            // XOR, 1000, out = A ^ B
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_XOR: op_out = xor_out;
 
-			/*
-			 *	CSRRW  only
-			 */
+            // CSRRW, 1001, out = A
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRW:	op_out = and_out;
 
-			/*
-			 *	CSRRS only
-			 */
+            // CSRRS, 1010, out = A | B
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRS:	op_out = and_out;
 
-			/*
-			 *	CSRRC only
-			 */
+            // CSRRC, 1011, out = ~A & B
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRC:	op_out = and_out;
 
-			/*
-			 *	Should never happen.
-			 */
+            // Shouldn't happen
 			default: op_out = 0;
 		endcase
 	end
@@ -208,23 +129,27 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
         case (ALUctl[3:0])
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_OR: ALUOut = ~op_out;
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SUB: ALUOut = op_out;
-            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT: ALUOut = op_out[31];
+            // For SLT, set to 32'b1 if op_out is negative, so just take the
+            // sign bit of op_out and pad with zeros at the start.
+            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT: ALUOut = {31'b0, op_out[31]};
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRW: ALUOut = op_out;
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRS: ALUOut = ~op_out;
             default: ALUOut = op_out;
         endcase
     end
 
+    wire ALUOut_Zero_Check;
+    assign ALUOut_Zero_Check = (ALUOut==0 ? 1'b1 : 1'b0);
+
     wire Branch_Result;
     wire Branch_Result_Inv;
-    wire Branch_Zero_Check;
 
-    assign Branch_Zero_Check = (ALUOut==0);
-
-    // Otherwise, ALUOut = A - B.
-    // Branch_Result = 1 if A < B, so need ALUOut < 0, so ALUOut[31] == 1
+    // All branches use the SUB operation.
+    // For BEQ, BNE, Branch_Result = ALUOut_Zero_Check
+    // For BLT, BGE, BLTU, BGEU, Branch_Result = ALUOut[31], which assuming
+    // ALUOut is signed, will be 1 if it is negative.
     mux2to1 branch_result_mux(
-        .input0(Branch_Zero_Check),
+        .input0(ALUOut_Zero_Check[0]),
         .input1(ALUOut[31]),
         .select(ALUctl[6]),
         .out(Branch_Result)
