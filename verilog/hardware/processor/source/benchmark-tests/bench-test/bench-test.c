@@ -24,7 +24,7 @@ int main(void)
 	int lenH = 9;
   	int nconv = lenH+lenH-1;
   	int i,j,h_start,x_start,x_end,y,m;
-	for (m=0; m<1000000000; m++){	//This is to make enough iterations for a period of time between LED flashes
+	for (m=0; m<100000; m++){	//This is to make enough iterations for a period of time between LED flashes
   	for (i=0; i<nconv; i++)
   	{
     	x_start = MAX(0,i-lenH+1);
