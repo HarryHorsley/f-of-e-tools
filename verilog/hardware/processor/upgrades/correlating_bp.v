@@ -85,6 +85,7 @@ module branch_predictor(
 	 *	modules in the design and to thereby set the values.
 	 */
 	initial begin
+		branch_history_reg = 4'b0000;
 		global_history_reg[15:0] = 2'b00;
 		branch_mem_sig_reg = 1'b0;
 	end
@@ -100,6 +101,8 @@ module branch_predictor(
 	 */
 	always @(posedge clk) begin
 		if (branch_mem_sig_reg) begin
+			branch_history_reg <= branch_history_reg << 1;
+			branch_history_reg[0] <= actual_branch_decision;
 			global_history_reg[branch_history_reg][1] <= (global_history_reg[branch_history_reg][1]&globa_history_reg[branch_history_reg][0]) | (global_history_reg[branch_history_reg][0]&actual_branch_decision) | (global_history_reg[branch_history_reg][1]&actual_branch_decision);
 			global_history_reg[branch_history_reg][0] <= actual_branch_decision;
 		end
