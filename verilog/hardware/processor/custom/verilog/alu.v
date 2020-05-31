@@ -12,7 +12,7 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
     reg[31:0] B_fwd;
     reg sub;
 
-    always @(ALUctl, A, B) begin
+    always @* begin
         case (ALUctl[3:0])
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_OR:
             begin
@@ -48,16 +48,15 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
     end
 
     wire[31:0] add_out;
-    wire[31:0] and_out;
+    reg[31:0] and_out;
     reg[31:0] shift_out;
-    wire[31:0] xor_out;
+    reg[31:0] xor_out;
 
     // Implement addition/subtraction with an SB_MAC16 instance
     // Input 1 (A_fwd) = {A[15:0], B[15:0]}
     // Input 2 (B_fwd) = {C[15:0], D[15:0]}
+    //
     SB_MAC16 sb_mac16_adder(
-        .CLK(1'b0),
-        .CE(1'b0),
         .A(A_fwd[31:16]),
         .B(A_fwd[15:0]),
         .C(B_fwd[31:16]),
@@ -85,21 +84,20 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
     defparam sb_mac16_adder.TOPADDSUB_CARRYSELECT = 2'b11; // Pass CO from lower to CI of upper
     defparam sb_mac16_adder.BOTADDSUB_CARRYSELECT = 2'b11; // Pass CI(sub) to lower CI
 
-    assign and_out = A_fwd & B_fwd;
-    assign xor_out = A^B;
-
-    always @(A_fwd, B_fwd) begin
-        case (ALUctl[4:1])
-            001: shift_out = A_fwd >> B_fwd[4:0];
-            010: shift_out = A_fwd >>> B_fwd[4:0];
-            100: shift_out = A_fwd << B_fwd[4:0];
-            default: shift_out = A_fwd >> B_fwd[4:0];
+    always @* begin
+        and_out = A_fwd & B_fwd;
+        xor_out = A^B;
+        case (ALUctl[2:0])
+            3'b011: shift_out = A_fwd >> B_fwd[4:0]; // SRL
+            3'b100: shift_out = A_fwd >>> B_fwd[4:0]; // SRA
+            3'b101: shift_out = A_fwd << B_fwd[4:0]; // SLL
+            default: shift_out = 0;
         endcase
     end
 
     reg[31:0] op_out;
 
-	always @(ALUctl, add_out, and_out, shift_out, xor_out) begin
+    always @* begin
 		case (ALUctl[3:0])
             // AND, 0000, out = A & B
 			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_AND: op_out = and_out;
@@ -142,7 +140,8 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 		endcase
 	end
 
-    always @(ALUctl, op_out) begin
+
+    always @* begin
         case (ALUctl[3:0])
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_OR: ALUOut = ~op_out;
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SUB: ALUOut = op_out;
@@ -155,8 +154,13 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
         endcase
     end
 
-    wire ALUOut_Zero_Check;
-    assign ALUOut_Zero_Check = (ALUOut==0 ? 1'b1 : 1'b0);
+    reg ALUOut_Zero_Check;
+    always @* begin
+        if (op_out===0)
+            ALUOut_Zero_Check = 1;
+        else
+            ALUOut_Zero_Check = 0;
+    end
 
     wire Branch_Result;
     wire Branch_Result_Inv;
@@ -165,21 +169,30 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
     // For BEQ, BNE, Branch_Result = ALUOut_Zero_Check
     // For BLT, BGE, BLTU, BGEU, Branch_Result = ALUOut[31], which assuming
     // ALUOut is signed, will be 1 if it is negative.
+
+     assign Branch_Result = ALUOut_Zero_Check & (~ALUctl[6]) | ALUOut[31] & (ALUctl[6]);
+    /* mux2to1 is 32-bit, so just use the above instead
     mux2to1 branch_result_mux(
         .input0(ALUOut_Zero_Check),
         .input1(ALUOut[31]),
         .select(ALUctl[6]),
         .out(Branch_Result)
     );
+    */
 
     assign Branch_Result_Inv = (~Branch_Result);
 
-    mux2to1 branch_inv_mux(
-        .input0(Branch_Result),
-        .input1(Branch_Result_Inv),
-        .select(ALUctl[4]),
-        .out(Branch_Enable)
-    );
-
+    always @* begin
+        // ALUctl[6:4] = 010 when branching is unused
+        if (~ALUctl[6] & ALUctl[5] & ~ALUctl[4]) begin
+            Branch_Enable = 1'b0;
+        end
+        else begin
+            if (ALUctl[4])
+                Branch_Enable = Branch_Result_Inv;
+            else
+                Branch_Enable = Branch_Result;
+        end
+    end
 
 endmodule
