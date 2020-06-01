@@ -53,6 +53,54 @@ module sub_forward(ALUctl, sub);
     end
 endmodule
 
+module op_select(ALUctl3to0, and_out, add_out, slt_out, srl_out,
+                 sra_out, sll_out, xor_out, op_out);
+    input [3:0] ALUctl3to0;
+    input [31:0] and_out, add_out, slt_out, srl_out, sra_out, sll_out, xor_out;
+    output reg [31:0] op_out;
+
+    always @* begin
+		case (ALUctl3to0)
+            // AND, 0000, out = A & B
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_AND: op_out = and_out;
+
+            // OR, 0001, out = A | B
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_OR: op_out = and_out;
+
+            // ADD, 0010, out = A + B
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_ADD: op_out = add_out;
+
+            // SUB, 0110, out = A - B
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SUB: op_out = add_out;
+
+            // SLT, 0111, out = (A < B ? 1 : 0)
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT: op_out = slt_out;
+
+            // SRL, 0011, out = A>>B[4:0]
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SRL: op_out = srl_out;
+
+            // SRA, 0100, out = A>>>B[4:0]
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SRA: op_out = sra_out;
+
+            // SLL, 0101, out = A<<B[4:0]
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLL: op_out = sll_out;
+
+            // XOR, 1000, out = A ^ B
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_XOR: op_out = xor_out;
+
+            // CSRRW, 1001, out = A
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRW:	op_out = and_out;
+
+            // CSRRS, 1010, out = A | B
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRS:	op_out = and_out;
+
+            // CSRRC, 1011, out = ~A & B
+			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRC:	op_out = and_out;
+
+            // Shouldn't happen
+			default: op_out = 0;
+		endcase
+	end
 module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 	input [6:0]		ALUctl;
 	input [31:0]		A;
@@ -128,48 +176,6 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 
     reg[31:0] op_out;
 
-    always @* begin
-		case (ALUctl[3:0])
-            // AND, 0000, out = A & B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_AND: op_out = and_out;
-
-            // OR, 0001, out = A | B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_OR: op_out = and_out;
-
-            // ADD, 0010, out = A + B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_ADD: op_out = add_out;
-
-            // SUB, 0110, out = A - B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SUB: op_out = add_out;
-
-            // SLT, 0111, out = (A < B ? 1 : 0)
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT: op_out = slt_out;
-
-            // SRL, 0011, out = A>>B[4:0]
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SRL: op_out = srl_out;
-
-            // SRA, 0100, out = A>>>B[4:0]
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SRA: op_out = sra_out;
-
-            // SLL, 0101, out = A<<B[4:0]
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLL: op_out = sll_out;
-
-            // XOR, 1000, out = A ^ B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_XOR: op_out = xor_out;
-
-            // CSRRW, 1001, out = A
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRW:	op_out = and_out;
-
-            // CSRRS, 1010, out = A | B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRS:	op_out = and_out;
-
-            // CSRRC, 1011, out = ~A & B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRC:	op_out = and_out;
-
-            // Shouldn't happen
-			default: op_out = 0;
-		endcase
-	end
 
     always @* begin
         case (ALUctl[3:0])
