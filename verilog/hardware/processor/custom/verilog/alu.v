@@ -47,7 +47,7 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
         endcase
     end
 
-    wire[31:0] add_out;
+    reg[31:0] add_out;
     reg[31:0] and_out;
     reg[31:0] shift_out;
     reg[31:0] xor_out;
@@ -56,6 +56,7 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
     // Input 1 (A_fwd) = {A[15:0], B[15:0]}
     // Input 2 (B_fwd) = {C[15:0], D[15:0]}
     //
+    /*
     SB_MAC16 sb_mac16_adder(
         .A(A_fwd[31:16]),
         .B(A_fwd[15:0]),
@@ -83,8 +84,13 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 
     defparam sb_mac16_adder.TOPADDSUB_CARRYSELECT = 2'b11; // Pass CO from lower to CI of upper
     defparam sb_mac16_adder.BOTADDSUB_CARRYSELECT = 2'b11; // Pass CI(sub) to lower CI
+    */
 
     always @* begin
+        if (sub)
+            add_out = A_fwd + ~B_fwd + 32'b1;
+        else
+            add_out = A_fwd + B_fwd;
         and_out = A_fwd & B_fwd;
         xor_out = A^B;
         case (ALUctl[2:0])
@@ -147,7 +153,8 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SUB: ALUOut = op_out;
             // For SLT, set to 32'b1 if op_out is negative, so just take the
             // sign bit of op_out and pad with zeros at the start.
-            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT: ALUOut = {31'b0, op_out[31]};
+            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT:
+                ALUOut = $signed(A_fwd) < $signed(B_fwd) ? 32'b1 : 32'b0; //{31'b0, op_out[31]};
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRW: ALUOut = op_out;
             `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRS: ALUOut = ~op_out;
             default: ALUOut = op_out;
@@ -162,15 +169,23 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
             ALUOut_Zero_Check = 0;
     end
 
-    wire Branch_Result;
-    wire Branch_Result_Inv;
+    reg Branch_Result;
 
     // All branches use the SUB operation.
     // For BEQ, BNE, Branch_Result = ALUOut_Zero_Check
     // For BLT, BGE, BLTU, BGEU, Branch_Result = ALUOut[31], which assuming
     // ALUOut is signed, will be 1 if it is negative.
 
-     assign Branch_Result = ALUOut_Zero_Check & (~ALUctl[6]) | ALUOut[31] & (ALUctl[6]);
+    always @* begin
+        if (ALUctl[6]) begin
+            if (ALUctl[5]) // unsigned
+                Branch_Result = $unsigned(A_fwd) < $unsigned(B_fwd) ? 32'b1 : 32'b0;
+            else // signed
+                Branch_Result = $signed(A_fwd) < $signed(B_fwd) ? 32'b1 : 32'b0;
+            end
+        else
+            Branch_Result = ALUOut_Zero_Check;
+    end
     /* mux2to1 is 32-bit, so just use the above instead
     mux2to1 branch_result_mux(
         .input0(ALUOut_Zero_Check),
@@ -180,8 +195,6 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
     );
     */
 
-    assign Branch_Result_Inv = (~Branch_Result);
-
     always @* begin
         // ALUctl[6:4] = 010 when branching is unused
         if (~ALUctl[6] & ALUctl[5] & ~ALUctl[4]) begin
@@ -189,7 +202,7 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
         end
         else begin
             if (ALUctl[4])
-                Branch_Enable = Branch_Result_Inv;
+                Branch_Enable = ~Branch_Result;
             else
                 Branch_Enable = Branch_Result;
         end
