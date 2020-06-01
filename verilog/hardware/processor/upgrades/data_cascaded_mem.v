@@ -22,7 +22,7 @@ SB_SPRAM256KA cascade0(
  .SLEEP(sleep),
  .POWEROFF(poweroff),
  .DATAOUT(data_out [31:16])
-) 
+) ;
 
 SB_SPRAM256KA cascade1(
  .DATAIN(data_in [15:0]),
@@ -35,4 +35,4 @@ SB_SPRAM256KA cascade1(
  .SLEEP(sleep),
  .POWEROFF(poweroff),
  .DATAOUT(data_out [15:0])
-) 
+) ;
