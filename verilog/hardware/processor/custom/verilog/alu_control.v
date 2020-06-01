@@ -58,8 +58,14 @@ module ALUControl(FuncCode, ALUCtl, Opcode);
                     3'b011:
                         ALUCtl[3:0] = `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_ILLEGAL;
                     default:
-                        // The same for all valid branches
-                        ALUCtl[3:0] = `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_BEQ;
+                        case (FuncCode[2])
+                            // BEQ and BNE use the SUB operation
+                            1'b0:
+                                ALUCtl[3:0] = `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SUB;
+                            // Others use SLT operation
+                            1'b1:
+                                ALUCtl[3:0] = `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT;
+                        endcase
                 endcase
 
 			/*
