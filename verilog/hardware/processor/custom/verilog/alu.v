@@ -1,45 +1,8 @@
 `include "../include/rv32i-defines.v"
 `include "../include/sail-core-defines.v"
 
-module arg_forward(ALUctl, A, B, A_fwd, B_fwd);
-	input [6:0]		ALUctl;
-	input [31:0]		A;
-	input [31:0]		B;
-	output reg [31:0]		A_fwd;
-	output reg [31:0]		B_fwd;
-
-    always @* begin
-        case (ALUctl[3:0])
-            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_OR:
-            begin
-                A_fwd = ~A;
-                B_fwd = ~B;
-            end
-            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRW:
-            begin
-                A_fwd = A; // Output A = A & A
-                B_fwd = A;
-            end
-            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRS:
-            begin
-                A_fwd = ~A;
-                B_fwd = ~B;
-            end
-            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRC:
-            begin
-                A_fwd = ~A;
-                B_fwd = B;
-            end
-            default:
-            begin
-                A_fwd = A;
-                B_fwd = B;
-            end
-        endcase
-    end
-
-endmodule
-
+// For some reason it uses less resources when this is put in a module
+// but not for other sections such as argument forwarding
 module sub_forward(ALUctl, sub);
     input [6:0] ALUctl;
     output reg sub;
@@ -53,54 +16,6 @@ module sub_forward(ALUctl, sub);
     end
 endmodule
 
-module op_select(ALUctl3to0, and_out, add_out, slt_out, srl_out,
-                 sra_out, sll_out, xor_out, op_out);
-    input [3:0] ALUctl3to0;
-    input [31:0] and_out, add_out, slt_out, srl_out, sra_out, sll_out, xor_out;
-    output reg [31:0] op_out;
-
-    always @* begin
-		case (ALUctl3to0)
-            // AND, 0000, out = A & B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_AND: op_out = and_out;
-
-            // OR, 0001, out = A | B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_OR: op_out = and_out;
-
-            // ADD, 0010, out = A + B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_ADD: op_out = add_out;
-
-            // SUB, 0110, out = A - B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SUB: op_out = add_out;
-
-            // SLT, 0111, out = (A < B ? 1 : 0)
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT: op_out = slt_out;
-
-            // SRL, 0011, out = A>>B[4:0]
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SRL: op_out = srl_out;
-
-            // SRA, 0100, out = A>>>B[4:0]
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SRA: op_out = sra_out;
-
-            // SLL, 0101, out = A<<B[4:0]
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLL: op_out = sll_out;
-
-            // XOR, 1000, out = A ^ B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_XOR: op_out = xor_out;
-
-            // CSRRW, 1001, out = A
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRW:	op_out = and_out;
-
-            // CSRRS, 1010, out = A | B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRS:	op_out = and_out;
-
-            // CSRRC, 1011, out = ~A & B
-			`kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRC:	op_out = and_out;
-
-            // Shouldn't happen
-			default: op_out = 0;
-		endcase
-	end
 module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 	input [6:0]		ALUctl;
 	input [31:0]		A;
@@ -108,29 +23,43 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
 	output reg [31:0]	ALUOut;
 	output reg          Branch_Enable;
 
-    wire[31:0] A_fwd;
-    wire[31:0] B_fwd;
+    reg [31:0] A_fwd;
+    reg[31:0] B_fwd;
     wire sub;
 
-    arg_forward ARG_FORWARD(
-        .ALUctl(ALUctl),
-        .A(A),
-        .B(B),
-        .A_fwd(A_fwd),
-        .B_fwd(B_fwd)
-    );
+    always @* begin
+        case (ALUctl[3:0])
+            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_OR:
+                A_fwd = ~A;
+            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRS:
+                A_fwd = ~A;
+            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRC:
+                A_fwd = ~A;
+            default:
+                A_fwd = A;
+        endcase
+    end
+
+    always @* begin
+        case (ALUctl[3:0])
+            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_OR:
+                B_fwd = ~B;
+            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRW:
+                B_fwd = A;
+            `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRS:
+                B_fwd = ~B;
+            default:
+                B_fwd = B;
+        endcase
+    end
+
     sub_forward SUB_FORWARD(
         .ALUctl(ALUctl),
         .sub(sub)
     );
 
-    wire [31:0] add_out;
-    wire [31:0] and_out;
-    wire [31:0] xor_out;
-    wire [31:0] srl_out;
-    wire [31:0] sra_out;
-    wire [31:0] sll_out;
-    wire [31:0] slt_out;
+    wire [31:0] add_out, and_out, xor_out, srl_out,
+                sra_out, sll_out, slt_out, sltu_out;
 
     // Implement addition/subtraction with an SB_MAC16 instance
     // Input 1 (A_fwd) = {A[15:0], B[15:0]}
@@ -168,14 +97,38 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
     //assign add_out = A_fwd + (sub?~B_fwd:B_fwd) + sub;
     assign add_out = sub ? ~sb_mac16_out : sb_mac16_out;
     assign and_out = A_fwd & B_fwd;
-    assign xor_out = A_fwd ^ B_fwd;
     assign srl_out = A_fwd >> B_fwd[4:0];
     assign sra_out = A_fwd >>> B_fwd[4:0];
     assign sll_out = A_fwd << B_fwd[4:0];
     assign slt_out = $signed(A_fwd) < $signed(B_fwd) ? 32'b1 : 32'b0;
+    // sltu only used for branch conditions
+    assign sltu_out = $unsigned(A_fwd) < $unsigned(B_fwd) ? 32'b1 : 32'b0;
+    assign xor_out = A_fwd ^ B_fwd;
 
-    reg[31:0] op_out;
+    wire[31:0] op_out;
 
+    wire and_sel, add_sel, slt_sel, srl_sel, sra_sel, sll_sel, xor_sel;
+    // sltu is not used as an operation
+    assign and_sel = ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_AND ||
+                     ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_OR ||
+                     ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRW ||
+                     ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRS ||
+                     ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_CSRRC;
+    assign add_sel = ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_ADD ||
+                     ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SUB;
+    assign slt_sel = ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLT;
+    assign srl_sel = ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SRL;
+    assign sra_sel = ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SRA;
+    assign sll_sel = ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_SLL;
+    assign xor_sel = ALUctl[3:0] === `kSAIL_MICROARCHITECTURE_ALUCTL_3to0_XOR;
+
+    assign op_out = {32{and_sel}} & and_out |
+                    {32{add_sel}} & add_out |
+                    {32{slt_sel}} & slt_out |
+                    {32{srl_sel}} & srl_out |
+                    {32{sra_sel}} & sra_out |
+                    {32{sll_sel}} & sll_out |
+                    {32{xor_sel}} & xor_out;
 
     always @* begin
         case (ALUctl[3:0])
@@ -185,23 +138,25 @@ module alu(ALUctl, A, B, ALUOut, Branch_Enable);
         endcase
     end
 
-    wire ALUOut_Zero_Check;
-    assign ALUOut_Zero_Check = op_out===0 ? 1'b1 : 1'b0;
-
-    wire Branch_Result;
-    assign Branch_Result = ALUctl[6] ? ALUOut : ALUOut_Zero_Check;
+    reg Branch_Result;
+    always @* begin
+        case (ALUctl[6:5])
+            // More efficient to use add_out instead of ALUOut, even though
+            // they are equal for branch operations
+            2'b00: Branch_Result = (add_out == 0 ? 1'b1 : 1'b0);
+            2'b10: Branch_Result = slt_out;
+            2'b11: Branch_Result = sltu_out;
+            default: Branch_Result = slt_out; // Invalid branch, re-use something
+        endcase
+    end
 
     always @* begin
-        // ALUctl[6:4] = 010 when branching is unused
-        if (~ALUctl[6] & ALUctl[5] & ~ALUctl[4]) begin
+        // ALUctl[6:4] = 010 when branching is unused.
+        // Also return 0 for an invalid branch
+        if ((~ALUctl[6] & ALUctl[5] & ~ALUctl[4]) || ALUctl[6:5] == 2'b01)
             Branch_Enable = 1'b0;
-        end
-        else begin
-            if (ALUctl[4])
-                Branch_Enable = ~Branch_Result;
-            else
-                Branch_Enable = Branch_Result;
-        end
+        else
+            Branch_Enable = Branch_Result ^ ALUctl[4];
     end
 
 endmodule
