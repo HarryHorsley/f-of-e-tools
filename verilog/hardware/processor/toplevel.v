@@ -87,8 +87,9 @@ module top (led);
 	);
 
 	instruction_memory inst_mem( 
-		.addr(inst_in), 
+		.addr(inst_in), //might need a [14:0] here for new instruction memory 
 		.out(inst_out)
+		//.clk(clk)
 	);
 
 	data_mem data_mem_inst(

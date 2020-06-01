@@ -70,8 +70,8 @@ module branch_predictor(
 	/*
 	 *	internal state
 	 */
-  reg [3:0] branch_history_reg;
-  reg [2:0] global_history_reg [15:0];
+	reg [3:0] 	branch_history_reg;
+ 	reg [2:0] 	global_history_reg [15:0];
 	reg		branch_mem_sig_reg;
 
 	/*
@@ -103,7 +103,7 @@ module branch_predictor(
 		if (branch_mem_sig_reg) begin
 			branch_history_reg <= branch_history_reg << 1;
 			branch_history_reg[0] <= actual_branch_decision;
-			global_history_reg[branch_history_reg][1] <= (global_history_reg[branch_history_reg][1]&globa_history_reg[branch_history_reg][0]) | (global_history_reg[branch_history_reg][0]&actual_branch_decision) | (global_history_reg[branch_history_reg][1]&actual_branch_decision);
+			global_history_reg[branch_history_reg][1] <= (global_history_reg[branch_history_reg][1]&global_history_reg[branch_history_reg][0]) | (global_history_reg[branch_history_reg][0]&actual_branch_decision) | (global_history_reg[branch_history_reg][1]&actual_branch_decision);
 			global_history_reg[branch_history_reg][0] <= actual_branch_decision;
 		end
 	end
