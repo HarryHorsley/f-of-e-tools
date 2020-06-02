@@ -89,7 +89,8 @@ module branch_predictor(
 			branch_history_reg <= branch_history_reg << 1;
 			branch_history_reg[0] <= actual_branch_decision;
 			global_history_reg[branch_history_reg][1] <= (global_history_reg[branch_history_reg][1]&global_history_reg[branch_history_reg][0]) | (global_history_reg[branch_history_reg][0]&actual_branch_decision) | (global_history_reg[branch_history_reg][1]&actual_branch_decision);
-			global_history_reg[branch_history_reg][0] <= actual_branch_decision;
+			//global_history_reg[branch_history_reg][0] <= actual_branch_decision;
+			global_history_reg[branch_history_reg][0] <= (global_history_reg[branch_history_reg][1]&(!global_history_reg[branch_history_reg][0])) | ((!global_history_reg[branch_history_reg][0])&actual_branch_decision) | (global_history_reg[branch_history_reg][1]&actual_branch_decision);
 		end
 	end
 
