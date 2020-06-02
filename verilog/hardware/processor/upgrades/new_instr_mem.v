@@ -67,3 +67,22 @@ mux2to1 mux2to1_dataout(
 		.select(select),
 		.out(data_out [31:0])
 );
+	
+	end module
+	
+module ram (din, addr, write_en, clk, dout);// 512x8
+ parameter addr_width = 9;
+ parameter data_width = 8;
+ input [addr_width-1:0] addr;
+ input [data_width-1:0] din;
+ input write_en, clk;
+ output [data_width-1:0] dout;
+ reg [data_width-1:0] dout; // Register for output.
+ reg [data_width-1:0] mem [(1<<addr_width)-1:0];
+ always @(posedge clk)
+ begin
+ if (write_en)
+ mem[(addr)] <= din;
+ dout = mem[addr]; // Output register controlled by clock.
+ end
+endmodule
